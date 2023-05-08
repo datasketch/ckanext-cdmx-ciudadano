@@ -11,7 +11,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='''ckanext-cdmx''',
+    name='''ckanext-cdmx_ciudadano''',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
@@ -23,7 +23,7 @@ setup(
     long_description_content_type="text/markdown",
 
     # The project's main homepage.
-    url='https://github.com/datasketch/ckanext-cdmx',
+    url='https://github.com/datasketch/ckanext-cdmx-ciudadano',
 
     # Author details
     author='''Datasketch''',
@@ -84,7 +84,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points='''
         [ckan.plugins]
-        cdmx=ckanext.cdmx.plugin:CdmxPlugin
+        cdmx_ciudadano=ckanext.cdmx_ciudadano.plugin:CdmxCiudadanoPlugin
 
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan

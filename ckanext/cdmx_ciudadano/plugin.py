@@ -4,7 +4,7 @@ import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
 from flask import request
 
-from ckanext.cdmx.lib import (
+from ckanext.cdmx_ciudadano.lib import (
     date_formats,
     extract_from_key,
     get_format_color,
@@ -19,7 +19,7 @@ from ckanext.cdmx.lib import (
 )
 
 
-class CdmxPlugin(
+class CdmxCiudadanoPlugin(
     plugins.SingletonPlugin, toolkit.DefaultDatasetForm, DefaultTranslation
 ):
     plugins.implements(plugins.ITranslation)
@@ -82,17 +82,17 @@ class CdmxPlugin(
     # IDatasetForm
 
     def create_package_schema(self):
-        schema = super(CdmxPlugin, self).create_package_schema()
+        schema = super(CdmxCiudadanoPlugin, self).create_package_schema()
         schema = self._modify_package_schema(schema)
         return schema
 
     def update_package_schema(self):
-        schema = super(CdmxPlugin, self).update_package_schema()
+        schema = super(CdmxCiudadanoPlugin, self).update_package_schema()
         schema = self._modify_package_schema(schema)
         return schema
 
     def show_package_schema(self):
-        schema = super(CdmxPlugin, self).show_package_schema()
+        schema = super(CdmxCiudadanoPlugin, self).show_package_schema()
         schema["tags"]["__extras"].append(toolkit.get_converter("free_tags_only"))
         schema["resources"].update(
             {

@@ -46,6 +46,13 @@
   background-color: #ffffff;
 }
 
+.bg-red {
+  background-color: #8B1534;
+  border-radius: 23px;
+  color: white;
+  font-size: 12px;
+}
+
 .border-dark-electric-blue {
   border-color: #637381;
 }

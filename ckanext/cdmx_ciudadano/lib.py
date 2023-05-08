@@ -92,6 +92,7 @@ def get_format_color(format):
         "json": "#ce5858",
         "doc": "#3e9fcc",
         "docx": "#3e9fcc",
+        "red": "#8B1534",
     }
 
     format_ = format.lower()

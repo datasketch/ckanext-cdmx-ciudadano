@@ -108,6 +108,8 @@ class CdmxCiudadanoPlugin(
                 "dashboard": [toolkit.get_validator("ignore_missing")],
                 "resource_tooltip": [toolkit.get_validator("ignore_missing")],
                 "average_legend": [toolkit.get_validator("ignore_missing")],
+                "meet_criteria": [toolkit.get_validator("ignore_missing")],
+                "foreign_vars": [toolkit.get_validator("ignore_missing")],
             }
         )
         return schema

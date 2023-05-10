@@ -143,6 +143,21 @@
   margin: 12px 0 0;
 }
 
+.btn-login {
+  background-color: #8B1534;
+  border-radius: 23px;
+  font-size: 12px;
+  gap: 10px;
+}
+
+.btn-login:hover {
+  color: white;
+}
+
+label.clean-label::after {
+  content: '';
+}
+
 @media screen and (min-width: 768px) {
   .banner-title {
     font-size: 3rem;

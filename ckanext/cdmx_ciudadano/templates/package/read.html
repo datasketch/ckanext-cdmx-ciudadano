@@ -83,9 +83,6 @@
                             {{ _('Private') }}
                           </span>
                         {% endif %}
-                        {% block package_archive_notice %}
-                          {{ super() }}
-                        {% endblock %}
                         {% block package_notes %}
                           {% if pkg.notes %}
                             <div class="notes embedded-content" style="border-bottom: 2px solid #d3d3d3;">

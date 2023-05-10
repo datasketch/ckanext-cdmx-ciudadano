@@ -14,7 +14,7 @@
     <div class="card-body p-2 p-md-3">
       <h5 class="card-title">
         <a href="{{ h.url_for('%s.read' % package.type, id=package.name) }}" class="text-dark-electric-blue">
-          <u>{{ h.truncate(title, truncate_title) }}</u>
+          <u>{{ title | truncate(truncate_title) }}</u>
         </a>
       </h5>
       <p class="card-text">

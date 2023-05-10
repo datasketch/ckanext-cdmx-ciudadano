@@ -6,46 +6,18 @@
 {% set current_url = h.current_url() %}
 {% set home_url = h.url_for("home.index") %}
 
-<nav id="main-nav" class="navbar navbar-light navbar-expand-lg bg-white font-inter">
-  <div class="container-fluid">
+<nav class="container-fluid">
+  <div class="flex flex-column font-inter justify-content-between align-items-center flex-sm-row">
     <a class="navbar-brand" href="{{ h.url_for('home.index') }}">
-      <img src="{{ h.url_for_static_or_external(g.site_logo) }}" alt="{{ g.site_title }}" title="{{ g.site_title }}" height="50">
+      <img src="/images/gob-cdmx.png" alt="{{ g.site_title }}" title="{{ g.site_title }}" width="180">
       {% if current_url != home_url %}
         <img src="/images/sistema-ajolote.png" alt="" style="height: 25px;" class="d-block ml-auto d-sm-inline">
       {% endif %}
-      <button type="button" class="btn bg-red"><img src='/images/llave-inicio-sesion.png' alt="llave" />&nbspIniciar Sesion</button>
     </a>
-    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav-menu" aria-controls="main-nav-menu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="main-nav-menu">
-      <ul class="navbar-nav ml-auto font-gotham text-sm">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ h.url_for('home.index') }}">Explora temas y variables</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ h.url_for('dataset.search') }}">Consulta el catálogo de datasets</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Sube tus datos</a>
-        </li>
-      </ul>
-    </div> -->
+    <a href="{{ h.url_for('user.login') }}" class="btn btn-login d-inline-flex align-items-center text-white">
+      <img width="10" src='/images/llave-inicio-sesion.png' alt="llave" />
+      <span>Iniciar Sesion</span>
+    </a>
   </div>
 </nav>
-<nav id="nav-menu" class="navbar navbar-expand-lg">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"><i class="fas fa-bars text-light pt-1"></i></span>
-  </button>
-  <div class="collapse navbar-collapse w-100 justify-content-center" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link mx-2{% if home_url == current_url %} active{% endif %}" aria-current="page" href="{{ home_url }}">Inicio</a>
-      {% set dataset_url = h.url_for("dataset.search") %}
-      <a class="nav-item nav-link mx-2{% if dataset_url == current_url %} active{% endif %}" href="{{ dataset_url }}">Conjuntos de datos</a>
-      <a class="nav-item nav-link mx-2" href="{{ h.url_for('resource.read', id='victimas-en-carpetas-de-investigacion-fgj', resource_id='d543a7b1-f8cb-439f-8a5c-e56c5479eeb5') }}">Explora datos de carpetas</a>
-      <a class="nav-item nav-link mx-2" href="https://plandeapertura.cdmx.gob.mx/" target="_blank">Plan de apertura</a>
-    </div>
-  </div>
-</nav>
-
 {% endblock %}

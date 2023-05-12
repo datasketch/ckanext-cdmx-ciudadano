@@ -16,6 +16,7 @@ from ckanext.cdmx_ciudadano.lib import (
     get_package_categories,
     humanize_filesize,
     dashboard_types,
+    get_join_vars,
 )
 
 
@@ -59,6 +60,7 @@ class CdmxCiudadanoPlugin(
             "get_site_url": get_site_url,
             "humanize_filesize": humanize_filesize,
             "dashboard_types": dashboard_types,
+            "get_join_vars": get_join_vars,
         }
 
     # IConfigurable
@@ -109,7 +111,7 @@ class CdmxCiudadanoPlugin(
                 "resource_tooltip": [toolkit.get_validator("ignore_missing")],
                 "average_legend": [toolkit.get_validator("ignore_missing")],
                 "meet_criteria": [toolkit.get_validator("ignore_missing")],
-                "foreign_vars": [toolkit.get_validator("ignore_missing")],
+                "join_vars": [toolkit.get_validator("ignore_missing")],
             }
         )
         return schema

@@ -108,3 +108,14 @@ def get_site_url():
 
 def humanize_filesize(value):
     return localised_filesize(int(value))
+
+
+def get_join_vars():
+    choices = [
+        {"value": "fecha", "text": "Fecha"},
+        {"value": "alcaldia", "text": "Alcaldía"},
+        {"value": "colonia", "text": "Colonia"},
+        {"value": "localidad", "text": "Localidad"},
+        {"value": "ageb", "text": "AGEB"},
+    ]
+    return choices

@@ -29,8 +29,6 @@
   {% endcall %}
 {% endblock %}
 
-{{ form.select("update_frequency", label=_("Frecuencia de actualización"), options=h.update_frequencies(), selected=data.update_frequency) }}
-
 <h2 class="mt-5 mb-4"><u>Cruza tu info</u></h2>
 
 <div>
@@ -49,6 +47,16 @@
         <span>No</span>
       </label>
     </div>
+  </div>
+  <p>¿Qué variables para cruzar tiene tu base?</p>
+  {% set join_vars_list = [data.join_vars] if data.join_vars is string else data.join_vars %}
+  <div class="d-flex" style="gap: 12px;">
+    {% for choice in h.get_join_vars() %}
+      <label for="{{choice['value']}}" class="d-inline-flex clean-label" style="gap: 4px;">
+        <input type="checkbox" name="join_vars" id="{{choice['value']}}" value="{{choice['value']}}" {% if choice["value"] in join_vars_list %}checked{% endif %}>
+        <span>{{ choice['text']}} </span>
+      </label>
+    {% endfor %}
   </div>
 </div>
 
@@ -91,8 +99,6 @@
     {{ form.input('resource_priority_date', id='field-resource_priority_date', label=_('Variable de fecha a priorizar'), placeholder='Lorem ipsum', value=data.resource_priority_date, error=errors.resource_priority_date, classes=['control-full']) }}
   
     {{ form.select("date_format", label=_("Formato de fechas"), options=h.date_formats(), selected=data.date_format) }}
-
-    {{ form.input('average_legend', id='field-average_legend', label=_('Leyenda promedio'), placeholder='El promedio se realiza con la unidad mínima de observación.', value=data.average_legend or 'El promedio se realiza con la unidad mínima de observación.', error=errors.average_legend, classes=['control-full']) }}
   </div>
   
   <div id="table">

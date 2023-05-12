@@ -90,7 +90,6 @@ def get_format_color(format):
         "json": "#ce5858",
         "doc": "#3e9fcc",
         "docx": "#3e9fcc",
-        "red": "#8B1534",
     }
 
     format_ = format.lower()
@@ -117,5 +116,13 @@ def get_join_vars():
         {"value": "colonia", "text": "Colonia"},
         {"value": "localidad", "text": "Localidad"},
         {"value": "ageb", "text": "AGEB"},
+    ]
+    return choices
+
+
+def get_dataset_categories():
+    choices = [
+        {"value": "medio-ambiente", "text": "Medio Ambiente"},
+        {"value": "cultura", "text": "Cultura"},
     ]
     return choices

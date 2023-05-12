@@ -30,6 +30,7 @@ class CdmxCiudadanoPlugin(
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IFacets)
     plugins.implements(plugins.IMiddleware)
+    # plugins.implements(plugins.IPackageController)
 
     # IMiddleware
     def make_middleware(self, app, config):
@@ -48,6 +49,8 @@ class CdmxCiudadanoPlugin(
     # ITemplateHelpers
 
     def get_helpers(self):
+        print(toolkit.current_user)
+        print("*****")
         return {
             "date_formats": date_formats,
             "update_frequencies": update_frequencies,
@@ -154,3 +157,38 @@ class CdmxCiudadanoPlugin(
     def organization_facets(self, facets_dict, organization_type, package_type):
         facets_dict.pop("tags")
         return facets_dict
+
+    # IPackageController
+
+    # def after_dataset_create(self, context, pkg_dict):
+    #     print(context)
+    #     print("------")
+    #     print(pkg_dict)
+    #     print("*******")
+
+    # def before_dataset_view(self, pkg_dict):
+    #     return pkg_dict
+
+    # def read(self, entity):
+    #     pass
+
+    # def create(self, entity) -> None:
+    #     pass
+
+    # def edit(self, entity) -> None:
+    #     pass
+
+    # def delete(self, entity) -> None:
+    #     pass
+
+    # def after_dataset_show(self, context, pkg_dict):
+    #     pass
+
+    # def before_dataset_search(self, search_params):
+    #     return search_params
+
+    # def after_dataset_search(self, search_results, search_params):
+    #     return search_results
+
+    # def before_dataset_index(self, pkg_dict):
+    #     return pkg_dict

@@ -4,7 +4,9 @@
 {% set notes = h.markdown_extract(package.notes, extract_length=truncate) %}
 {% set group = package.groups[0] %}
 
-<div class="card dataset-card">
+<!-- {% set show_icon = // recorrer el arreglo de resources y si alguno tiene la condición meet_criteria en true entonces la variable va a ser True %} -->
+
+<div class="card dataset-card" data-pkg="{{package.resources}}">
   <div class="d-flex flex-column align-items-start flex-md-row">
     {% if group %}
       <div class="card-body text-center pr-0">
@@ -15,6 +17,9 @@
       <h5 class="card-title">
         <a href="{{ h.url_for('%s.read' % package.type, id=package.name) }}" class="text-dark-electric-blue">
           <u>{{ title | truncate(truncate_title) }}</u>
+          <!-- {% if show_icon %}
+            <img src="" alt="">
+          {% endif %} -->
         </a>
       </h5>
       <p class="card-text">

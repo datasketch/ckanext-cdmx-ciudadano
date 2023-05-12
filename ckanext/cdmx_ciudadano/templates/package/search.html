@@ -29,8 +29,21 @@
           {% endblock %}
           {% block primary %}
             <div class="primary col-lg-8" role="main">
+              <p>hola mundo</p>
               {% block primary_content %}
-                {{ super() }}
+                {% block page_primary_action %}
+                  {{ super() }}
+                {% endblock %}
+                {% block form %}
+                  {{ super() }}
+                {% endblock %}
+                <div class="alert alert-warning" role="alert">
+                  <p><i class="fas fa-info-circle"></i> Los conjuntos de datos mostrados fueron cargados por ciudadanos. El Gobierno de la Ciudad de México no se hace responsable por la calidad y actualización de los datos</p>
+                </div>
+                <!-- Leyenda: Datos que se pueden cruzar -->
+                {% block package_search_results_list %}
+                  {{ super() }}
+                {% endblock %}
               {% endblock %}
             </div>
           {% endblock %}

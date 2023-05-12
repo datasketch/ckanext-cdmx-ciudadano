@@ -26,6 +26,11 @@
     {% endif %}
   {% endblock %}
   <div class="mt-4">
+    {% if res.meet_criteria == "true" %}
+      <a href="/cruzatuinfo" class="btn btn-sm text-white rounded" style="background-color: #5C2C82">
+        Cruzar con datos del portal
+      </a>
+    {% endif %}
     {% if res.dashboard not in ["default", "tables", "shp"] %}
       <a href="{{ url }}" class="btn btn-sm bg-cadmium-orange text-white rounded">
         Consultar

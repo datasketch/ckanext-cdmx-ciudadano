@@ -42,7 +42,7 @@
             </tr>
           {% endif %}
 
-        <!--   {% if pkg_dict.version %}
+          {% if pkg_dict.version %}
             <tr>
               <th scope="row" class="dataset-label">{{ _("Version") }}</th>
               <td class="dataset-details">{{ pkg_dict.version }}</td>
@@ -62,7 +62,7 @@
                   {% snippet 'snippets/local_friendly_datetime.html', datetime_obj=pkg_dict.metadata_modified %}
               </td>
             </tr>
-          {% endif %} -->
+          {% endif %}
           {% if pkg_dict.metadata_created %}
             <tr>
               <th scope="row" class="dataset-label">{{ _("Created") }}</th>

@@ -2,7 +2,7 @@
 
 {% block basic_fields %}
 
-<h2><u>Carga tus archivos</u></h2>
+<h2><u>CARGA TUS ARCHIVOS</u></h2>
 <p>En esta sección podrás cargar archivos de datos o enlaces (como Google drive) para subirlos al Repositorio Ciudadano de Datos Abiertos. También podrás seleccionar qué tipo de visualizador tendrán tus datos y los parámetros de las visualizaciones</p>
 
 {% block basic_fields_url %}
@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block basic_fields_name %}
-  {{ form.input('name', id='field-name', label=_('Título'), placeholder=_('eg. January 2011 Gold Prices'), value=data.name, error=errors.name, classes=['control-full']) }}
+  {{ form.input('name', id='field-name', label=_('TÍTULO'), placeholder=_('eg. A descritive title'), value=data.name, error=errors.name, classes=['control-full']) }}
 {% endblock %}
 
 {{ form.input('resource_subtitle', id='field-resource_subtitle', label=_('Subtítulo'), placeholder='Lorem ipsum', value=data.resource_subtitle, error=errors.resource_subtitle, classes=['control-full']) }}

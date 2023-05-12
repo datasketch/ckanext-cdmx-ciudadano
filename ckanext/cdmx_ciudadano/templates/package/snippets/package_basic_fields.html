@@ -1,0 +1,19 @@
+{% ckan_extends %}
+
+
+{% block package_basic_fields_title %}
+    <h2><u>INFORMACIÓN GENERAL</u></h2>
+    <p>Registra la información general de tu conjunto de datos. Esta información ayudará a que las personas puedan encontrar y entender mejor la información que cargaste al Repositorio Ciudadano de Datos Abiertos.</p>
+  {{ form.input('title', id='field-title', label=_('TÍTULO'), placeholder=_('eg. A descriptive title'), value=data.title, error=errors.title, classes=['control-full', 'control-large'], attrs={'data-module': 'slug-preview-target', 'class': 'form-control'}) }}
+{% endblock %}
+
+{% block package_basic_fields_license %}
+    <div>
+        <p>
+            <i class="fa fa-info-circle"></i> Al cargar tu conjunto de datos aceptas que la información contenida sea de uso público de acuerdo con la licencia CC-BY-4 definidad por Creative Commons Atribution. Puedes encontrar más información en opendefinition.org
+        </p>
+    </div>
+{% endblock %}
+
+{% block package_basic_fields_org %}
+{% endblock %}

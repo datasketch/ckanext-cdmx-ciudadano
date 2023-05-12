@@ -89,3 +89,16 @@
   color: #ffffff !important;
   background-color: transparent;
 }
+
+.stages li.complete .highlight {
+  color: #eef6ed;
+  background: #D9D9D9;
+  list-style-type:none;
+}
+
+.stages li.active .highlight {
+  color: #ffffff;
+  background: #938F22;
+  list-style-type:none;
+  ;
+}

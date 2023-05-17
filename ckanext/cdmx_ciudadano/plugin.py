@@ -49,8 +49,6 @@ class CdmxCiudadanoPlugin(
     # ITemplateHelpers
 
     def get_helpers(self):
-        print(toolkit.current_user)
-        print("*****")
         return {
             "date_formats": date_formats,
             "update_frequencies": update_frequencies,

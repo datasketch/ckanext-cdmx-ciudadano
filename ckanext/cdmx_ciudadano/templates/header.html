@@ -9,7 +9,9 @@
 <nav class="container-fluid">
   <div class="flex flex-column font-inter justify-content-between align-items-center flex-sm-row">
     <a class="navbar-brand" href="{{ h.url_for('home.index') }}">
-      <img src="/images/gob-cdmx.png" alt="{{ g.site_title }}" title="{{ g.site_title }}" width="180">
+      <img src="/images/gob-cdmx.png" alt="{{ g.site_title }}" title="{{ g.site_title }}" style="height: 40px;">
+      <img src="/images/separador.png" alt="separador" style="height: 35px;" class="separador">
+      <img src="/images/logo.png" alt="logo ciudadano" style="height: 20px;">
       {% if current_url != home_url %}
         <img src="/images/sistema-ajolote.png" alt="" style="height: 25px;" class="d-block ml-auto d-sm-inline">
       {% endif %}

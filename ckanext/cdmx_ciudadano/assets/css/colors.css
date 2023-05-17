@@ -46,6 +46,11 @@
   background-color: #ffffff;
 }
 
+.bg-green {
+  background-color: #938F22;
+  opacity: 0.83;
+}
+
 .border-dark-electric-blue {
   border-color: #637381;
 }

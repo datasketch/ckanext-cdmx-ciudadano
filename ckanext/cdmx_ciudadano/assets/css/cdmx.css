@@ -154,8 +154,19 @@
   color: white;
 }
 
+.separador {
+  padding-right: 10px;
+  padding-left: 15px;
+}
+
 label.clean-label::after {
   content: '';
+}
+
+.banner-bottom {
+  display: flex;
+  align-content: center;
+  justify-content: center;  
 }
 
 @media screen and (min-width: 768px) {
@@ -183,4 +194,6 @@ label.clean-label::after {
   .group-list {
     grid-template-columns: repeat(3, 1fr);
   }
+
+
 }

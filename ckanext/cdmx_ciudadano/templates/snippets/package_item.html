@@ -10,7 +10,7 @@
 
 
 
-<div class="card dataset-card" data-pkg="{{package.resources}}">
+<div class="card dataset-card" data-pkg="{{package.resources}}" style="border: 2px solid #938F22;">
   <div class="d-flex flex-column align-items-start flex-md-row">
     {% if group %}
     <div class="card-body text-center pr-0">
@@ -22,7 +22,7 @@
         <a href="{{ h.url_for('%s.read' % package.type, id=package.name) }}" class="text-dark-electric-blue">
           <u>{{ title | truncate(truncate_title) }}</u>
           {% if show_icon %}
-            <img src="/images/icono_cruce.png" alt="">
+            <img src="/images/icono_cruce.png" alt="" style="height: 32px; padding-left: 10px;">
           {% endif %}
         </a>
       </h5>
@@ -53,7 +53,6 @@
           href="{{ h.url_for('%s.read' % package.organization.type, id=package.organization.name) }}">{{
           package.organization.title }}</a>
       </p>
-      <p>{{ show_icon }}</p>      
     </div>
   </div>
 </div>

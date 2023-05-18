@@ -1,3 +1,5 @@
+{% set stats = h.get_site_statistics() %}
+
 <div class="jumbotron jumbotron-fluid"
   style="background-image: url(/images/background-image-index.png); background-position: center 65%; background-size: cover; background-repeat: no-repeat;"
   role="main">
@@ -35,4 +37,17 @@
     </div>
   </div>
 </div>
-
+<div style="background-image: url(/images/hexagonos.png); display: flex; flex-direction: column; padding: 20px 0; justify-content: center;
+align-items: center;" >
+  <div class="font-gotham" style="color: #585858; display: flex; gap: 10px;">
+    <div style="font-size: 42px;">{{ stats.dataset_count }}</div>
+    <div>
+      <p style="font-size: 22px;">CONJUNTOS DE DATOS COLABORATIVOS <br> <b>CARGADOS POR CIUDADANOS</b></p>
+    </div>
+  </div>
+  <a style="color: #938F22; font-size: 20px;"><u>Consulta el repositorio</u></a>
+</div>
+<div style="background-image: url(/images/fondo-ondas.png); background-size: 100% auto; display: flex; flex-direction: column; padding: 20px 0; justify-content: center;
+align-items: center;" >
+  {% snippet "home/snippets/cdmx_featured_groups.html" %}
+</div>

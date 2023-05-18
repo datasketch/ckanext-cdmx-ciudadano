@@ -1,39 +1,43 @@
 {% set groups = h.get_featured_groups() %}
 
-<div class="card rounded-2xl overflow-hidden">
-  <div class="card-header bg-dark-electric-blue" style="padding: 0.75rem 1.25rem;">
-    <h3 class="font-weight-bold text-center text-white mb-0 text-3xl">
+<div>
+  <div style="padding: 0.75rem 1.25rem;">
+    <h3 class="font-weight-bold text-center mb-0 text-xl" style="color: #585858;">
       Consulta por categoría
     </h3>
   </div>
-  <div class="card-body">
-    <div class="row">
-      {% for group in groups[:6] %}
-        <div class="col-md-4 col-sm-6">
-          <div class="col-md-10 mx-auto px-0">
-            <a href="{{ h.url_for(controller='group', action='read', id=group.name) }}" class="d-flex align-items-start justify-content-start py-3 text-dark-electric-blue">
-              <img src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ group.title or group.name }}" style="max-width: 36px; width: 100%; height: auto; object-fit: contain;">
-              <div class="text-sm ml-3">
-                <p class="font-weight-bold mb-0">
-                  {{ group.title or group.name }}
-                </p>
-                <p class="mb-0">
-                  {% if group.package_count %}
-                    {{ ungettext('{num} Dataset', '{num} Datasets', group.package_count).format(num=group.package_count) }}
-                  {% elif group.package_count == 0 %}
-                    {{ _('0 Datasets') }}
-                  {% endif %}
-                </p>
-              </div>
-            </a>
-          </div>
+  <div>
+    <div class="flex" style="display: flex; gap: 50px; align-items: center;">
+      {% for group in groups[:3] %}
+      <div >
+        <div >
+          <a href="{{ h.url_for(controller='group', action='read', id=group.name) }}"
+            class="d-flex  py-3 text-dark-electric-blue ">
+            <img src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}"
+              alt="{{ group.title or group.name }}"
+              style="max-width: 36px; width: 100%; height: auto; object-fit: contain;">
+            <div class="text-sm ml-3" style="padding-left: 10px;">
+              <p class="font-weight-bold mb-0" style="font-size: 17px; font-weight: 700;">
+                {{ group.title or group.name }}
+              </p>
+              <p class="mb-0" style="font-size: 12px; font-weight: 400;">
+                {% if group.package_count %}
+                {{ ungettext('{num} Dataset', '{num} Datasets', group.package_count).format(num=group.package_count) }}
+                {% elif group.package_count == 0 %}
+                {{ _('0 Datasets') }}
+                {% endif %}
+              </p>
+            </div>
+          </a>
         </div>
+      </div>
       {% endfor %}
+      <div>
+        <div class="text-center mb-0 font-weight-bold" style="background-color: #938F22; width: 112px; border-radius: 45px; height: 45px;
+      ;">
+          <a href="{{ h.url_for('group.index') }}" class="text-white" style="font-size: 12px; font-weight: 700; line-height: 1;">Ver todas las categorías</a>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="card-footer bg-platinum">
-    <p class="text-center mb-0 font-weight-bold">
-      <a href="{{ h.url_for('group.index') }}" class="text-dark-electric-blue">Ver todas las categorías</a>
-    </p>
   </div>
 </div>

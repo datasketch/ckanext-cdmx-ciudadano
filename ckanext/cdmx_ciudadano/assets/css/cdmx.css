@@ -169,6 +169,84 @@ label.clean-label::after {
   justify-content: center;  
 }
 
+.main {
+  background: white;
+}
+
+.wrapper {
+  border: 0px;
+  box-shadow: none;
+}
+
+.wrapper:before {
+  border-right: none
+}
+
+.module-heading {
+  background-color: white;
+  border: none;
+}
+
+.module-unit {
+  border-radius: 6.6px;
+  box-shadow: 0px 1.7px 3.3px 0.8px #1A1A1A1A;
+}
+
+.btn-primary {
+  background-color: #938F22;
+  border-color: #938F22;
+}
+
+ol {
+  border-radius: 50px;
+  background: #d9d9d9;
+  color: 898989;
+}
+
+.stages li::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-radius: 0;
+  margin-right: 0;
+  display: none;
+}
+
+.stages li .highlight {
+  position: static;
+  padding: 0px 0px;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.stages li.last {
+  border-radius: 50px;
+}
+
+
+
+.stages li.active {
+  background:  #938F22;
+  color: white
+}
+
+.stages li {
+  padding: 4px 12px;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.stages li::after {
+  content: '';
+  margin-top: 0;
+  margin-left: 0;
+  position: static;
+  border-width: 0;
+  border-bottom-color: transparent;
+  border-top-color: transparent;
+  border: none;
+}
+
 @media screen and (min-width: 768px) {
   .banner-title {
     font-size: 3rem;

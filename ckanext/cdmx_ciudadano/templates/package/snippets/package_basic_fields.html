@@ -1,9 +1,9 @@
 {% ckan_extends %}
 
 {% block package_basic_fields_title %}
-<h2><u>INFORMACIÓN GENERAL</u></h2>
-<p>Registra la información general de tu conjunto de datos. Esta información ayudará a que las personas puedan encontrar y entender mejor la información que cargaste al Repositorio Ciudadano de Datos Abiertos.</p>
-{{super()}}
+<h5><u>INFORMACIÓN GENERAL</u></h5>
+<p style="padding-bottom: 5px;">Registra la información general de tu conjunto de datos. Esta información ayudará a que las personas puedan encontrar y entender mejor la información que cargaste al Repositorio Ciudadano de Datos Abiertos.</p>
+{{ form.input('title', id='field-title', label=_('TITULO'), placeholder=_('eg. A descriptive title'), value=data.title, error=errors.title, classes=['control-full', 'control-large'], attrs={'data-module': 'slug-preview-target', 'class': 'form-control'}) }}
 <!-- <p>{{ h.groups_available() }}</p>
 <div class="form-group control-medium">
   <label for="groups" class="form-label">Categorías</label>
@@ -16,9 +16,18 @@
 </div> -->
 {% endblock %}
 
+{% block package_basic_fields_description %}
+  {{ form.markdown('notes', id='field-notes', label=_('DESCRIPCIÓN'), placeholder=_('eg. Some useful notes about the data'), value=data.notes, error=errors.notes) }}
+{% endblock %}
+
+{% block package_basic_fields_tags %}
+  {% set tag_attrs = {'data-module': 'autocomplete', 'data-module-tags': '', 'data-module-source': '/api/2/util/tag/autocomplete?incomplete=?'} %}
+  {{ form.input('tag_string', id='field-tags', label=_('ETIQUETAS DE BÚSQUEDA'), placeholder=_('eg. economy, mental health, government'), value=data.tag_string, error=errors.tags, classes=['control-full'], attrs=tag_attrs) }}
+{% endblock %}
+
 {% block package_basic_fields_license %}
 <div class="alert alert-warning" role="alert">
-  <p><i class="fas fa-info-circle"></i> Al cargar tu conjunto de datos aceptas que la información contenida sea de uso público de acuerdo con la licencia CC-BY-4 definidad por Creative Commons Atribution. Puedes encontrar más información en opendefinition.org</p>
+  <p><i class="fas fa-info-circle"></i> Al cargar tu conjunto de datos aceptas que la información contenida sea de uso público de acuerdo con la licencia CC-BY-4 definidad por Creative Commons Atribution. Puedes encontrar más información en <a href="https://opendefinition.org/" style="color: #1ACD37;">opendefinition.org</a></p>
 </div>
 {% endblock %}
 

@@ -234,6 +234,7 @@ ol {
   padding: 4px 12px;
   text-align: center;
   border-radius: 50px;
+  background: #d9d9d9;
 }
 
 .stages li::after {
@@ -245,6 +246,17 @@ ol {
   border-bottom-color: transparent;
   border-top-color: transparent;
   border: none;
+}
+
+
+.search-form {
+  padding-bottom: 0px;
+  border-bottom: 0px;
+}
+
+.mt-5 {
+  margin-top: 10px !important;
+  margin-bottom: 10px;
 }
 
 @media screen and (min-width: 768px) {

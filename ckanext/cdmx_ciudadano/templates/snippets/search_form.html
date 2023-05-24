@@ -43,6 +43,9 @@
 {% endblock %}
 
 {% block search_facets %}
+  <div class="alert alert-warning" role="alert" style="margin-top: 18px;">
+    <p><i class="fas fa-info-circle"></i> Los conjuntos de datos mostrados fueron cargados por ciudadanos. El Gobierno de la Ciudad de México no se hace responsable por la calidad y actualización de los datos</p>
+  </div>
   {% if facets %}
     <div class="filter-list">
       {% if facets.fields | length > 0 %}

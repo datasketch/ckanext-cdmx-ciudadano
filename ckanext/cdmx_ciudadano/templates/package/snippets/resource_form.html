@@ -3,122 +3,162 @@
 {% block basic_fields %}
 
 <h3><u>CARGA TUS ARCHIVOS</u></h3>
-<p>En esta sección podrás cargar archivos de datos o enlaces (como Google drive) para subirlos al Repositorio Ciudadano de Datos Abiertos. También podrás seleccionar qué tipo de visualizador tendrán tus datos y los parámetros de las visualizaciones</p>
+<p>En esta sección podrás cargar archivos de datos o enlaces (como Google drive) para subirlos al Repositorio Ciudadano
+  de Datos Abiertos. También podrás seleccionar qué tipo de visualizador tendrán tus datos y los parámetros de las
+  visualizaciones</p>
 
 {% block basic_fields_url %}
-  {{ super() }}
+  {% set is_upload = (data.url_type == 'upload') %}
+  {% snippet 'package/snippets/resource_upload_field.html',
+  data=data,
+  errors=errors,
+  is_url=data.url and not is_upload,
+  is_upload=is_upload,
+  is_upload_enabled=h.uploads_enabled(),
+  url_label=_('URL'),
+  upload_label=_('File'),
+  placeholder=_('http://example.com/external-data.csv') %}
 {% endblock %}
 
 {% block basic_fields_name %}
-  {{ form.input('name', id='field-name', label=_('TÍTULO'), placeholder=_('eg. A descritive title'), value=data.name, error=errors.name, classes=['control-full']) }}
+{{ form.input('name', id='field-name', label=_('TÍTULO'), placeholder=_('ej. Un título descriptivo'), value=data.name,
+error=errors.name, classes=['control-full']) }}
 {% endblock %}
 
-{{ form.input('resource_subtitle', id='field-resource_subtitle', label=_('Subtítulo'), placeholder='Lorem ipsum', value=data.resource_subtitle, error=errors.resource_subtitle, classes=['control-full']) }}
+{{ form.input('resource_subtitle', id='field-resource_subtitle', label=_('SUBTÍTULO'), placeholder='ej. Un título
+descriptivo', value=data.resource_subtitle, error=errors.resource_subtitle, classes=['control-full']) }}
 
 {% block basic_fields_description %}
-  {{ form.markdown('description', id='field-description', label=_('Description'), placeholder=_('Some useful notes about the data'), value=data.description, error=errors.description) }}
+{{ form.markdown('description', id='field-description', label=_('DESCRIPCIÓN'), placeholder=_('Some useful notes about
+the data'), value=data.description, error=errors.description) }}
 {% endblock %}
 
 {% block basic_fields_format %}
-  {% set format_attrs = {'data-module': 'autocomplete', 'data-module-source': '/api/2/util/resource/format_autocomplete?incomplete=?'} %}
-  {% call form.input('format', id='field-format', label=_('Format'), placeholder=_('eg. CSV, XML or JSON'), value=data.format, error=errors.format, classes=['control-medium'], attrs=format_attrs) %}
-    <span class="info-block info-block-small">
-      <i class="fa fa-info-circle"></i>
-      {{ _('This will be guessed automatically. Leave blank if you wish') }}
-    </span>
-  {% endcall %}
+{% set format_attrs = {'data-module': 'autocomplete', 'data-module-source':
+'/api/2/util/resource/format_autocomplete?incomplete=?'} %}
+{% call form.input('format', id='field-format', label=_('FORMATO'), placeholder=_('eg. CSV, XML or JSON'),
+value=data.format, error=errors.format, classes=['control-medium'], attrs=format_attrs) %}
+<span class="info-block info-block-small">
+  <i class="fa fa-info-circle"></i>
+  {{ _('This will be guessed automatically. Leave blank if you wish') }}
+</span>
+{% endcall %}
 {% endblock %}
 
-<h2 class="mt-5 mb-4"><u>Cruza tu info</u></h2>
+<h3 class="mt-5 mb-4"><u>CRUZA TU INFO</u></h3>
 
 <div>
-  <p>¿Tu base de datos cumple con los criterios de estructura y limpieza de datos para poder cruzarse con otras bases?</p>
-  <p><a href="#">Consulta los criterios de estructura y limpieza de datos así como plantillas y catálogos para cargar tus datos</a></p>
-  <div class="d-flex" style="gap: 28px">
+  <p>¿TU BASE DE DATOS CUMPLE CON LOS CRITERIOS DE ESTRUCTURA Y LIMPIEZA DE DATOS PARA PODER CRUZARSE CON OTRAS BASES?
+  </p>
+  <p><a href="#" style="color: #1ACD37;
+    ;">Consulta los criterios de estructura y limpieza de datos así como plantillas y catálogos para cargar tus
+      datos</a></p>
+  <div class="d-flex" style="gap: 28px; padding-bottom: 30px;">
     <div class="d-flex align-items-center">
       <label for="meet_criteria_yes" class="clean-label">
-        <input type="radio" name="meet_criteria" id="meet_criteria_yes" value="true" {% if data.meet_criteria == "true" %}checked{% endif %}>
+        <input type="radio" name="meet_criteria" id="meet_criteria_yes" value="true" {% if data.meet_criteria=="true"
+          %}checked{% endif %}>
         <span>Sí</span>
       </label>
     </div>
     <div class="d-flex align-items-center">
       <label for="meet_criteria_no" class="clean-label">
-        <input type="radio" name="meet_criteria" id="meet_criteria_no" value="false" {% if data.meet_criteria == "false" %}checked{% endif %}>
+        <input type="radio" name="meet_criteria" id="meet_criteria_no" value="false" {% if data.meet_criteria=="false"
+          %}checked{% endif %}>
         <span>No</span>
       </label>
     </div>
   </div>
-  <p>¿Qué variables para cruzar tiene tu base?</p>
+  <p><b>¿QUÉ VARIABLES PARA CRUZAR TIENE TU BASE?</b></p>
   {% set join_vars_list = [data.join_vars] if data.join_vars is string else data.join_vars %}
-  <div class="d-flex" style="gap: 12px;">
+  <div style="gap: 12px; display: grid; grid-template-rows: repeat(3, 1fr); grid-template-columns: repeat(2, 100PX); ">
     {% for choice in h.get_join_vars() %}
-      <label for="{{choice['value']}}" class="d-inline-flex clean-label" style="gap: 4px;">
-        <input type="checkbox" name="join_vars" id="{{choice['value']}}" value="{{choice['value']}}" {% if choice["value"] in join_vars_list %}checked{% endif %}>
-        <span>{{ choice['text']}} </span>
-      </label>
+    <label for="{{choice['value']}}" class="d-inline-flex clean-label" style="gap: 4px; font-weight: normal;">
+      <input type="radio" name="join_vars" id="{{choice['value']}}" value="{{choice['value']}}" {% if choice["value"]
+        in join_vars_list %}checked{% endif %}>
+      <span>{{ choice['text']}} </span>
+    </label>
     {% endfor %}
   </div>
 </div>
 
-<h2 class="mt-5 mb-4">Ajustes para visualizaciones</h2>
+<h3 class="mt-5 mb-4"><u>AJUSTES PARA VISUALIZACIONES</u></h3>
 
-{{ form.select("dashboard", label=_("Seleccione un visor"), options=h.dashboard_types(), selected=data.dashboard, attrs={'class': 'form-control', 'data-module': 'select-field-tabs', 'data-module-panels': 'fields-panel' , 'data-module-open': data.dashboard or 'default' }) }}
+{{ form.select("dashboard", label=_("SELECCIONE UN VISOR"), options=h.dashboard_types(), selected=data.dashboard,
+attrs={'class': 'form-control', 'data-module': 'select-field-tabs', 'data-module-panels': 'fields-panel' ,
+'data-module-open': data.dashboard or 'default' }) }}
 
 <div id="fields-panel">
   <div id="default">
-    {% call form.input('resource_viz', id='field-resource_viz', label=_('Variables a visualizar'), placeholder='ej:columna_a,columna_d', value=data.resource_viz, error=errors.resource_viz, classes=['control-full']) %}
+    {% call form.input('resource_viz', id='field-resource_viz', label=_('VARIABLES A VISUALIZAR'),
+    placeholder='ej:columna_a,columna_d', value=data.resource_viz, error=errors.resource_viz, classes=['control-full'])
+    %}
     <span class="info-block info-block-small">
       <i class="fa fa-info-circle"></i>
       {{ _('Utilice comas para separar los campos') }}
     </span>
     {% endcall %}
-  
-    {% call form.input('resource_disaggregate', id='field-resource_disaggregate', label=_('Variables para desagregar'), placeholder='ej:columna_a,columna_d', value=data.resource_disaggregate, error=errors.resource_disaggregate, classes=['control-full']) %}
+
+    {% call form.input('resource_disaggregate', id='field-resource_disaggregate', label=_('VARIABLES PARA DESAGREGAR'),
+    placeholder='ej:columna_a,columna_d', value=data.resource_disaggregate, error=errors.resource_disaggregate,
+    classes=['control-full']) %}
     <span class="info-block info-block-small">
       <i class="fa fa-info-circle"></i>
       {{ _('Utilice comas para separar los campos') }}
     </span>
     {% endcall %}
-  
-    {% call form.input('resource_filters', id='field-resource_filters', label=_('Variables para filtrar'), placeholder='ej:columna_a,columna_d', value=data.resource_filters, error=errors.resource_filters, classes=['control-full']) %}
+
+    {% call form.input('resource_filters', id='field-resource_filters', label=_('VARIABLES PARA FILTRAR'),
+    placeholder='ej:columna_a,columna_d', value=data.resource_filters, error=errors.resource_filters,
+    classes=['control-full']) %}
     <span class="info-block info-block-small">
       <i class="fa fa-info-circle"></i>
       {{ _('Utilice comas para separar los campos') }}
     </span>
     {% endcall %}
-  
-    {{ form.select("chart_type", label=_("Visualización por defecto"), options=h.chart_types(), selected=data.chart_type) }}
-  
-    {% call form.input('resource_default_var', id='field-resource_default_var', label=_('Variable por defecto'), placeholder='columna_a', value=data.resource_default_var, error=errors.resource_default_var, classes=['control-full']) %}
+
+    {{ form.select("chart_type", label=_("VISUALIZACIÓN POR DEFECTO"), options=h.chart_types(),
+    selected=data.chart_type) }}
+
+    {% call form.input('resource_default_var', id='field-resource_default_var', label=_('VARIABLE POR DEFECTO'),
+    placeholder='columna_a', value=data.resource_default_var, error=errors.resource_default_var,
+    classes=['control-full']) %}
     <span class="info-block info-block-small">
       <i class="fa fa-info-circle"></i>
       {{ _('Utilice comas para separar los campos') }}
     </span>
     {% endcall %}
-  
-    {{ form.input('resource_priority_date', id='field-resource_priority_date', label=_('Variable de fecha a priorizar'), placeholder='Lorem ipsum', value=data.resource_priority_date, error=errors.resource_priority_date, classes=['control-full']) }}
-  
-    {{ form.select("date_format", label=_("Formato de fechas"), options=h.date_formats(), selected=data.date_format) }}
+
+    {{ form.input('resource_priority_date', id='field-resource_priority_date', label=_('VARIABLE DE FECHA A PRIORIZAR'),
+    placeholder='Lorem ipsum', value=data.resource_priority_date, error=errors.resource_priority_date,
+    classes=['control-full']) }}
+
+    {{ form.select("date_format", label=_("FORMATO DE FECHAS"), options=h.date_formats(), selected=data.date_format) }}
   </div>
-  
+
   <div id="table">
-    {% call form.input('resource_filters', id='field-resource_filters', label=_('Variables para filtrar'), placeholder='ej:columna_a,columna_d', value=data.resource_filters, error=errors.resource_filters, classes=['control-full']) %}
+    {% call form.input('resource_filters', id='field-resource_filters', label=_('Variables para filtrar'),
+    placeholder='ej:columna_a,columna_d', value=data.resource_filters, error=errors.resource_filters,
+    classes=['control-full']) %}
     <span class="info-block info-block-small">
       <i class="fa fa-info-circle"></i>
       {{ _('Utilice comas para separar los campos') }}
     </span>
     {% endcall %}
   </div>
-  
+
   <div id="shp">
-    {% call form.input('resource_tooltip', id='field-resource_tooltip', label=_('Variables en tooltip'), placeholder='ej:columna_a', value=data.resource_tooltip, error=errors.resource_tooltip, classes=['control-full']) %}
+    {% call form.input('resource_tooltip', id='field-resource_tooltip', label=_('Variables en tooltip'),
+    placeholder='ej:columna_a', value=data.resource_tooltip, error=errors.resource_tooltip, classes=['control-full']) %}
     <span class="info-block info-block-small">
       <i class="fa fa-info-circle"></i>
       {{ _('Utilice comas para separar los campos') }}
     </span>
     {% endcall %}
-    
-    {% call form.input('resource_viz', id='field-resource_viz', label=_('Variables a visualizar'), placeholder='ej:columna_a,columna_d', value=data.resource_viz, error=errors.resource_viz, classes=['control-full']) %}
+
+    {% call form.input('resource_viz', id='field-resource_viz', label=_('Variables a visualizar'),
+    placeholder='ej:columna_a,columna_d', value=data.resource_viz, error=errors.resource_viz, classes=['control-full'])
+    %}
     <span class="info-block info-block-small">
       <i class="fa fa-info-circle"></i>
       {{ _('Utilice comas para separar los campos') }}

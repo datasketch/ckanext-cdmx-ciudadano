@@ -18,6 +18,7 @@
                   <div class="card-body">
                     <h5 class="font-weight-bold">Filtros</h5>
                     <p class="mb-0">Encuentra conjuntos de datos según tus intereses.</p>
+                    <p>{{ facet_titles }}</p>
                   </div>
                   {% for facet in facet_titles %}
                     {{ h.snippet('snippets/facet_list.html', title=facet_titles[facet], name=facet, search_facets=search_facets) }}
@@ -36,8 +37,8 @@
                 {% block form %}
                   {{ super() }}
                 {% endblock %}
-                <div class="alert alert-warning" role="alert">
-                  <p><i class="fas fa-info-circle"></i> Los conjuntos de datos mostrados fueron cargados por ciudadanos. El Gobierno de la Ciudad de México no se hace responsable por la calidad y actualización de los datos</p>
+                <div>
+                  <p style="color: #938F22;"><img src="/images/icono_cruce.png" alt="" style="height: 32px; padding-left: 30px; padding-right: 15px;"> Datos que se pueden cruzar</p>
                 </div>
                 <!-- Leyenda: Datos que se pueden cruzar -->
                 {% block package_search_results_list %}

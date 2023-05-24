@@ -22,14 +22,14 @@
     <ol class="stages {{ class }}">
       <li class="first {{ s1 }}">
         {% if s1 != 'complete' %}
-          <span class="highlight">{{ h.humanize_entity_type('package', dataset_type, 'create label') or _('Información general de los datos') }}</span>
+          <span class="highlight"><b>{{ h.humanize_entity_type('package', dataset_type, 'create label') or _('Información general de los datos') }}</b></span>
         {% else %}
           <button class="highlight" name="save" value="go-dataset" type="submit">{{ h.humanize_entity_type('package', dataset_type, 'create label') or _('Información general de los datos') }}</button>
         {% endif %}
       </li>
       <li class="last {{ s2 }}">
         {% if s2 != 'complete' %}
-          <span class="highlight">{{ _('Carga tus datos') }}</span>
+          <span class="highlight"><b>{{ _('Carga tus datos') }}</b></span>
         {% else %}
           {% if s1 == 'active' %}
             {# stage 1 #}

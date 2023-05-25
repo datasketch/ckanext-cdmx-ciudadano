@@ -129,4 +129,5 @@ def get_dataset_categories():
     return choices
 
 def default_package_type():
-    return config.get('ckan.default.package_type')
+    default = "dataset"
+    return default

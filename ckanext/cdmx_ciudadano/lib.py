@@ -2,6 +2,7 @@ from datetime import datetime
 from babel.dates import format_date
 import ckan.plugins.toolkit as toolkit
 from ckan.lib.formatters import localised_filesize
+from ckan.common import config
 
 
 def date_formats():
@@ -126,3 +127,6 @@ def get_dataset_categories():
         {"value": "cultura", "text": "Cultura"},
     ]
     return choices
+
+def default_package_type():
+    return config.get('ckan.default.package_type')

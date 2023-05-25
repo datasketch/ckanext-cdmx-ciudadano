@@ -17,6 +17,7 @@ from ckanext.cdmx_ciudadano.lib import (
     humanize_filesize,
     dashboard_types,
     get_join_vars,
+    default_package_type
 )
 
 
@@ -62,6 +63,7 @@ class CdmxCiudadanoPlugin(
             "humanize_filesize": humanize_filesize,
             "dashboard_types": dashboard_types,
             "get_join_vars": get_join_vars,
+            "default_package_type": default_package_type,
         }
 
     # IConfigurable

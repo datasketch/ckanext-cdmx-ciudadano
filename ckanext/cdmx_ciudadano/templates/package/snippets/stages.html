@@ -14,7 +14,7 @@
     #}
     {% set s1 = stages[0] or 'active' %}
     {% set s2 = stages[1] or 'uncomplete' %}
-    {% set dataset_type = dataset_type or h.default_package_type() %}
+    {% set dataset_type = dataset_type %}
     
     {% if s1 != 'uncomplete' %}{% set class = 'stage-1' %}{% endif %}
     {% if s2 != 'uncomplete' %}{% set class = 'stage-2' %}{% endif %}

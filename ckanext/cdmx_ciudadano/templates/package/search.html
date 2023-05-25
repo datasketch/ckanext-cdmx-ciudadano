@@ -18,7 +18,7 @@
                   <div class="card-body">
                     <h5 class="font-weight-bold">Filtros</h5>
                     <p class="mb-0">Encuentra conjuntos de datos según tus intereses.</p>
-                    <p>{{ facet_titles }}</p>
+                    <!-- <p>{{ facet_titles }}</p> -->
                   </div>
                   {% for facet in facet_titles %}
                     {{ h.snippet('snippets/facet_list.html', title=facet_titles[facet], name=facet, search_facets=search_facets) }}

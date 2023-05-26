@@ -19,8 +19,8 @@
                     <div class="form-check">
                       <input id={{ item.name }} class="form-check-input" type="checkbox" value={{ item.name }} {% if item.active %}checked{% endif %} data-module="redirect" data-module-href="{{ href }}">
                       <label for={{ item.name }} class="form-check-label font-weight-normal">
-                        <a class="py-2 text-eerie-black" href="{{ href }}" title="{{ label }}">
-                          {{ label | truncate(50) }}
+                        <a class="py-2 text-eerie-black" href="{{ href }}" title="{{ item.display_name }}">
+                          {{ item.display_name | truncate(50) }}
                         </a>
                       </label>
                     </div>

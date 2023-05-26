@@ -267,6 +267,13 @@ ol {
   background-color: #938F22;
 }
 
+button[name=save]:disabled {
+  background: gray;
+  opacity: 0.6;
+  cursor: not-allowed !important;
+  border-color: gray;
+}
+
 @media screen and (min-width: 768px) {
   .banner-title {
     font-size: 3rem;

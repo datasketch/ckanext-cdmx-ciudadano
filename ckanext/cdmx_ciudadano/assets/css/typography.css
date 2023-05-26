@@ -27,7 +27,7 @@
 }
 
 .font-inter {
-  font-family: "Inter", sans-serif
+  font-family: "Inter", sans-serif;
 }
 
 .font-weight-semibold {
@@ -40,6 +40,10 @@
 
 .text-sm {
   font-size: 14px;
+}
+
+.text-xs {
+  font-size: 12px;
 }
 
 .text-lg {

@@ -1,7 +1,7 @@
 {% set stats = h.get_site_statistics() %}
 
-<div class="jumbotron jumbotron-fluid"
-  style="background-image: url(/images/background-image-index.png); background-position: center 65%; background-size: cover; background-repeat: no-repeat;"
+<div class="jumbotron jumbotron-fluid mb-0"
+  style="background-image: url(/images/background-image-index.png); background-position: center 65%; background-size: cover; background-repeat: no-repeat; padding: 4rem 2rem calc(4rem + 120px); position: relative;"
   role="main">
   <div class="container text-white text-center py-5 font-gotham ">
     <h2 style="font-size: 24px; font-weight: lighter;">PLATAFORMA DE DATOS ABIERTOS</h1>
@@ -20,34 +20,34 @@
         </div>
       </div>
   </div>
-  <div style="height: 120px;display: flex;
-  justify-content: center;
-  align-items: center;" class="banner-bottom bg-green2 ">
-    <div class="flex" style="width: 80%; gap: 15px; align-items: center; justify-content: center;">
-      <div style="font-size: 17px;  color: #ffffff; text-align: right; gap: 20px; width: 50%;">
-        <p>En este repositorio ciudadano podrás publicar tus conjuntos de datos para que otras personas puedan
-          consultar,
-          interactuar y cruzarlos con otros datos.</p>
+  <div style="height: 120px; position: absolute; left: 0; bottom: 0; width: 100%;" class="d-flex align-items-center justify-content-center banner-bottom bg-green2">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <div class="d-flex align-items-center justify-content-center flex-column flex-md-row" style="gap: 15px;">
+            <div class="text-white text-right" style="width: 50%;">
+              <p>En este repositorio ciudadano podrás publicar tus conjuntos de datos para que otras personas puedan consultar, interactuar y cruzarlos con otros datos.</p>
+            </div>
+            <a href="/dataset/new" class="d-flex align-items-center justify-content-center bg-white" style="padding: 5px 0; gap: 15px; width: 300px; border-radius: 45px; height: 50px;" >
+              <img src="/images/cargar.png" width="24">
+              <span style="color: #938F22; font-size: 20px;">Carga tus datos</span>
+            </a>
+          </div>
+        </div>
       </div>
-      <a href="/dataset/new"><div
-        style="background-color: #ffffff;display: flex; align-items:center; justify-content: center;padding: 5px 0; gap: 15px; width: 300px; border-radius: 45px; height: 50px;" >
-        <img src="/images/cargar.png" width="25">
-        <label style="color: #938F22; font-size: 20px;" class="clean-label">Carga tus datos</label>
-      </div></a>
     </div>
   </div>
 </div>
 <div style="background-image: url(/images/hexagonos.png); background-size: 100% auto; display: flex; flex-direction: column; padding: 20px 0; justify-content: center;
 align-items: center;" >
-  <div class="font-gotham" style="color: #585858; display: flex; gap: 10px;">
-    <div style="font-size: 42px;">{{ stats.dataset_count }}</div>
-    <div>
+  <div class="font-gotham d-flex" style="color: #585858; gap: 10px;">
+    <div style="font-size: 42px; line-height: 1;">{{ stats.dataset_count }}</div>
+    <div style="line-height: 1;">
       <p style="font-size: 22px;">CONJUNTOS DE DATOS COLABORATIVOS <br> <b>CARGADOS POR CIUDADANOS</b></p>
     </div>
   </div>
   <a style="color: #938F22; font-size: 20px;" href="/dataset"><u>Consulta el repositorio</u></a>
 </div>
-<div style="background-image: url(/images/fondo-ondas.png); background-size: 100% auto; display: flex; flex-direction: column; padding: 20px 0; justify-content: center;
-align-items: center;" >
+<div style="background-image: url(/images/fondo-ondas.png); background-size: cover; background-position: center;" class="d-flex flex-column align-items-center justify-content-center py-4">
   {% snippet "home/snippets/cdmx_featured_groups.html" %}
 </div>

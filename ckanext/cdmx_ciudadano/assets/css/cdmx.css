@@ -250,6 +250,9 @@ ol {
   border: none;
 }
 
+.border {
+  border: none;
+}
 
 .search-form {
   padding-bottom: 0px;

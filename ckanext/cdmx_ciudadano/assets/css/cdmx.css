@@ -251,7 +251,7 @@ ol {
 }
 
 .border {
-  border: none;
+  border: none !important;
 }
 
 .search-form {

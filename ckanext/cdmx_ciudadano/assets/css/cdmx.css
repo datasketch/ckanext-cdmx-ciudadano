@@ -259,6 +259,14 @@ ol {
   margin-bottom: 10px;
 }
 
+.searchbox-button {
+  background-color: #938F22;
+}
+
+.bg-polished-pine {
+  background-color: #938F22;
+}
+
 @media screen and (min-width: 768px) {
   .banner-title {
     font-size: 3rem;

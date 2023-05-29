@@ -1,0 +1,80 @@
+{#
+    Displays a sidebar module with information for given resource
+    
+    res    - The resource dict
+    
+    Example:
+    
+      {% snippet "package/snippets/resource_info.html", res=res %}
+    
+    #}
+    <!-- <div class="module context-info">
+      <div class="module-content">
+        {% block page_title %}
+          <h1 class="heading">{{ h.resource_display_name(res) or res.id }}</h1>
+        {% endblock %}
+        {% block resource_info %}
+          <div class="nums">
+            <dl>
+              <dt>{{ _('Format') }}</dt>
+              <dd>{{ h.get_translated(res, 'format') }}</dd>
+            </dl>
+          </div>
+        {% endblock %}
+      </div>
+      <p>helloooo</p>
+    </div> -->
+    <section class="module module-narrow module-shallow">
+        <div class="module-unit" style="margin-top: 75px; padding-top: 20px;">
+            <h2 class="module-heading"><i class="fa fa-info-circle"></i> ¿Cómo cargar mis archivos?</h2>
+            <div class="module-content" style="text-align: justify;">
+                <p>Puedes subir archivos directamente desde tu ordenador o añadir un enlace al archivo almacenado en la nube
+                    como Google Drive.
+                </p>
+                <p>
+                    Es altamente recomendable añadir un diccionario de datos, notas metodológicas, archivo de interpretación
+                    de
+                    claves o cualquier otro recurso que ayude a las personas a entender la información que compartes.
+                </p>
+                <p>
+                    Si no sabes qué debe contener un diccionario de datos puedes descargar nuestra plantilla en el siguiente
+                    enlace:
+                </p>
+                <p>
+                    Plantilla de diccionario de datos</p>
+            </div>
+        </div>
+        <div class="module-unit" style="margin-top: 75px; padding-top: 20px;">
+            <h2 class="module-heading"><i class="fa fa-info-circle"></i> ¿Quieres que tus datos se puedan cruzar con otros?
+            </h2>
+            <div class="module-content" style="text-align: justify;">
+                <p>Para que tus datos puedan ser cruzados con otros datos es necesario que tu base cuente con al menos una
+                    de
+                    las variables de cruce y que esté en el formato adecuado. Las variables por las que es posible cruzar
+                    bases
+                    de datos son: fecha, alcaldía, colonia, localidad o AGEB.
+                </p>
+                <p>Criterios de estructura y formato de datos
+                </p>
+            </div>
+        </div>
+        <div class="module-unit" style="margin-top: 75px; padding-top: 20px;">
+            <h2 class="module-heading"><i class="fa fa-info-circle"></i> ¿Cómo funcionan los visualizadores de datos?</h2>
+            <div class="module-content" style="text-align: justify;">
+                <p>Existen cuatro tipos de visualizadores de datos que se adaptan a diferentes formatos o a la información
+                    que
+                    contengan tus archivos. Cada visualizador puede configurarse para que las visualizaciones mostradas sean
+                    las
+                    más idóneas.
+                </p>
+                <p>
+                    Si quieres saber más de cómo configurar tus visualizaciones puedes consultar el manual disponible en el
+                    siguiente enlace:
+    
+                </p>
+                <p>Configura tus visualizaciones
+                </p>
+            </div>
+        </div>
+    </section>
+    

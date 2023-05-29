@@ -57,7 +57,7 @@
 }
 
 .resource-banner-container {
-  color: #3998A5;
+  color: #938F22;
   isolation: isolate;
   max-width: 1536px;
   text-align: center;
@@ -195,8 +195,8 @@ label.clean-label::after {
 }
 
 .btn-primary {
-  background-color: #938F22;
-  border-color: #938F22;
+  background-color: #938F22 !important;
+  border-color: #938F22 !important;
 }
 
 ol {

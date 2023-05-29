@@ -27,7 +27,7 @@
         </a>
       </h5>
       <p class="card-text">
-        <strong>Última Actualización</strong>: {{ h.humanize_date(package.metadata_modified) }}
+        <strong>Fecha de carga</strong>: {{ h.humanize_date(package.metadata_modified) }}
       </p>
       {% block notes %}
       {% if notes %}
@@ -45,11 +45,11 @@
       {% endblock %}
       {% if package.groups %}
       <p class="card-text">
-        <strong>Categoría:</strong> <span class="text-aqua">{{ h.get_package_categories(package) }}</span>
+        <strong>Categoría:</strong> <span class="text-aqua2">{{ h.get_package_categories(package) }}</span>
       </p>
       {% endif %}
       <p class="card-text">
-        <strong>{{ _('Organization') }}:</strong> <a class="text-aqua"
+        <strong>{{ _('Publicador') }}:</strong> <a class="text-aqua2"
           href="{{ h.url_for('%s.read' % package.organization.type, id=package.organization.name) }}">{{
           package.organization.title }}</a>
       </p>

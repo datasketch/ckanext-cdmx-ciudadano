@@ -18,9 +18,9 @@
           {% endif %}
 
           {% if pkg_dict.author_email %}
-            <tr style="color: #689322;">
+            <tr>
               <th scope="row" class="dataset-label">{{ _("Nombre") }}</th>
-              <td class="dataset-details" property="dc:creator">{{ h.mail_to(email_address=pkg_dict.author_email, name=pkg_dict.author) }}</td>
+              <td class="dataset-details" property="dc:creator" style="color: #689322;">{{ h.mail_to(email_address=pkg_dict.author_email, name=pkg_dict.author) }}</td>
             </tr>
           {% elif pkg_dict.author %}
             <tr>

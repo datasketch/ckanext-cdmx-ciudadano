@@ -4,6 +4,8 @@ import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
 from flask import request
 
+from ckanext.cdmx_ciudadano import blueprint
+
 from ckanext.cdmx_ciudadano.lib import (
     date_formats,
     extract_from_key,
@@ -31,6 +33,7 @@ class CdmxCiudadanoPlugin(
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IFacets)
     plugins.implements(plugins.IMiddleware)
+    plugins.implements(plugins.IBlueprint)
     # plugins.implements(plugins.IPackageController)
 
     # IMiddleware
@@ -157,6 +160,9 @@ class CdmxCiudadanoPlugin(
     def organization_facets(self, facets_dict, organization_type, package_type):
         facets_dict.pop("tags")
         return facets_dict
+    
+    def get_blueprint(self):
+        return blueprint.validate
 
     # IPackageController
 

@@ -8,7 +8,7 @@
         {% block package_additional_info %}
           {% if pkg_dict.url %}
             <tr>
-              <th scope="row" class="dataset-label">{{ _('FUENTE') }}</th>
+              <th scope="row" class="dataset-label">{{ _('Fuente') }}</th>
               {% if h.is_url(pkg_dict.url) %}
                 <td class="dataset-details" property="foaf:homepage">{{ h.link_to(pkg_dict.url, pkg_dict.url, rel='foaf:homepage', target='_blank') }}</td>
               {% else %}
@@ -18,8 +18,8 @@
           {% endif %}
 
           {% if pkg_dict.author_email %}
-            <tr>
-              <th scope="row" class="dataset-label">{{ _("Correo") }}</th>
+            <tr style="color: #689322;">
+              <th scope="row" class="dataset-label">{{ _("Nombre") }}</th>
               <td class="dataset-details" property="dc:creator">{{ h.mail_to(email_address=pkg_dict.author_email, name=pkg_dict.author) }}</td>
             </tr>
           {% elif pkg_dict.author %}

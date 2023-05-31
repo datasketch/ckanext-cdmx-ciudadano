@@ -18,6 +18,15 @@
 
 {% block package_basic_fields_description %}
   {{ form.markdown('notes', id='field-notes', label=_('DESCRIPCIÓN'), placeholder=_('eg. Some useful notes about the data'), value=data.notes, error=errors.notes) }}
+  <div class="form-group control-medium">
+    <label for="groups" class="form-label">CATEGORÍAS</label>
+    <select name="groups__0__id" id="groups" class="control" data-module="autocomplete">
+      <option value=""></option>
+      {% for group in h.groups_available() %}
+        <option value="{{ group.id }}">{{group.title}} - {{group.id}}</option>
+      {% endfor %}
+    </select>
+  </div>
 {% endblock %}
 
 {% block package_basic_fields_tags %}

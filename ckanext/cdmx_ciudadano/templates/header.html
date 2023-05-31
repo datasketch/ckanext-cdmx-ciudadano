@@ -23,7 +23,7 @@
   </div>
 </nav>
 
-{% if current_url != home_url %}
+{% if c.userobj %}
   {% block header_account %}
   <div class="account-masthead" style="background-color:#5C677C">
     <div class="container">

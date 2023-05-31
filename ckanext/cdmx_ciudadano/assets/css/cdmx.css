@@ -279,6 +279,10 @@ button[name=save]:disabled {
   border-color: gray;
 }
 
+a {
+  color: #1ACD37;
+}
+
 @media screen and (min-width: 768px) {
   .banner-title {
     font-size: 3rem;

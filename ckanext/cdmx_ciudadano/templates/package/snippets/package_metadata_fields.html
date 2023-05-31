@@ -5,7 +5,7 @@
     {{ form.input('url', label=_('FUENTE'), id='field-url', placeholder=_('http://example.com/dataset.json'), value=data.url, error=errors.url, classes=['control-medium']) }}
   {% endblock %}
 
-  <h5 class="mt-5 mb-4"><u>DATOS DE CONTACTO</u></h5>
+  <h5 class="mt-5 mb-4" style="padding-top: 20px;"><u>DATOS DE CONTACTO</u></h5>
 
   {% block package_metadata_author %}
     {{ form.input('author', label=_('PERSONA QUE PUBLICA (NOMBRE)'), id='field-author', placeholder=_('Joe Bloggs'), value=data.author, error=errors.author, classes=['control-medium']) }}
@@ -20,7 +20,7 @@
   {% block dataset_fields %}
   {% endblock %}
 
-  <h5 style="padding-bottom: 5px;"><u>DECLARATORIA DE RESPONSABILIDAD</u></h5>
+  <h5 style="padding-bottom: 5px; padding-top: 20px;"><u>DECLARATORIA DE RESPONSABILIDAD</u></h5>
 
   <div style="border: 3px solid #938F22; border-radius: 15px; color: #8d8d8d; padding: 20px; margin-bottom: 50px;">
     <p><b>Bajo protesta de decir verdad declaro que:</b></p>

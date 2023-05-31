@@ -45,7 +45,7 @@ value=data.format, error=errors.format, classes=['control-medium'], attrs=format
 {% endcall %}
 {% endblock %}
 
-<h3 class="mt-5 mb-4"><u>CRUZA TU INFO</u></h3>
+<h3 class="mt-5 mb-4" style="padding-top: 20px;"><u>CRUZA TU INFO</u></h3>
 
 <div>
   <p>¿TU BASE DE DATOS CUMPLE CON LOS CRITERIOS DE ESTRUCTURA Y LIMPIEZA DE DATOS PARA PODER CRUZARSE CON OTRAS BASES?
@@ -82,7 +82,7 @@ value=data.format, error=errors.format, classes=['control-medium'], attrs=format
   </div>
 </div>
 
-<h3 class="mt-5 mb-4"><u>AJUSTES PARA VISUALIZACIONES</u></h3>
+<h3 class="mt-5 mb-4" style="padding-top: 20px;"><u>AJUSTES PARA VISUALIZACIONES</u></h3>
 
 {{ form.select("dashboard", label=_("SELECCIONE UN VISOR"), options=h.dashboard_types(), selected=data.dashboard,
 attrs={'class': 'form-control', 'data-module': 'select-field-tabs', 'data-module-panels': 'fields-panel' ,

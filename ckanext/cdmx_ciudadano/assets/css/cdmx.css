@@ -288,6 +288,11 @@ h5 {
   font-weight: 700 !important;
 }
 
+h5 {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+}
+
 .control-large .control-label {
   font-size: 14px !important;
 }

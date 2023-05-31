@@ -18,14 +18,14 @@
     </div>
     {% endif %}
     <div class="card-body p-2 p-md-3">
-      <h5 class="card-title">
+      <h3 class="card-title">
         <a href="{{ h.url_for('%s.read' % package.type, id=package.name) }}" class="text-dark-electric-blue">
           <u>{{ title | truncate(truncate_title) }}</u>
           {% if show_icon %}
             <img src="/images/icono_cruce.png" alt="" style="height: 32px; padding-left: 10px;">
           {% endif %}
         </a>
-      </h5>
+      </h3>
       <p class="card-text">
         <strong>Fecha de carga</strong>: {{ h.humanize_date(package.metadata_modified) }}
       </p>

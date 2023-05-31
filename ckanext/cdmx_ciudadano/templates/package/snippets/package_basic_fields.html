@@ -4,16 +4,7 @@
 <h5><u>INFORMACIÓN GENERAL</u></h5>
 <p style="padding-bottom: 5px;">Registra la información general de tu conjunto de datos. Esta información ayudará a que las personas puedan encontrar y entender mejor la información que cargaste al Repositorio Ciudadano de Datos Abiertos.</p>
 {{ form.input('title', id='field-title', label=_('TÍTULO'), placeholder=_('eg. A descriptive title'), value=data.title, error=errors.title, classes=['control-full', 'control-large'], attrs={'data-module': 'slug-preview-target', 'class': 'form-control'}) }}
-<!-- <p>{{ h.groups_available() }}</p>
-<div class="form-group control-medium">
-  <label for="groups" class="form-label">Categorías</label>
-  <select name="groups__0__id" id="groups" data-module="autocomplete" class="control">
-    <option value=""></option>
-    {% for group in h.groups_available() %}
-      <option value="{{ group.id }}">{{group.title}}</option>
-    {% endfor %}
-  </select>
-</div> -->
+
 {% endblock %}
 
 {% block package_basic_fields_description %}
@@ -23,7 +14,7 @@
     <select name="groups__0__id" id="groups" class="control" data-module="autocomplete">
       <option value=""></option>
       {% for group in h.groups_available() %}
-        <option value="{{ group.id }}">{{group.title}} - {{group.id}}</option>
+        <option value="{{ group.id }}">{{group.title}}</option>
       {% endfor %}
     </select>
   </div>

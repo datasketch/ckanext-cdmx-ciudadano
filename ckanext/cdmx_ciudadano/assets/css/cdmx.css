@@ -283,6 +283,14 @@ a {
   color: #1ACD37;
 }
 
+h5 {
+  font-size: 0.875rem !important;
+}
+
+.control-large .control-label {
+  font-size: 14px !important;
+}
+
 @media screen and (min-width: 768px) {
   .banner-title {
     font-size: 3rem;

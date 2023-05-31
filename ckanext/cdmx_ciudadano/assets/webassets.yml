@@ -20,4 +20,4 @@ cdmx_js:
     - javascript/modules/select-field-tabs.js
     - javascript/modules/resource-info.js
     - javascript/modules/disclaimer.js
-    - javascript/modules/resource-upload-field.js
+    - javascript/modules/resource-upload-field2.js

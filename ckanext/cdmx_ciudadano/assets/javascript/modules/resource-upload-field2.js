@@ -1,4 +1,4 @@
-this.ckan.module('resource-upload-field', function (jQuery) {
+this.ckan.module('resource-upload-field2', function (jQuery) {
     var _nameIsDirty = !! $('input[name="name"]').val();
     return {
       initialize: function() {

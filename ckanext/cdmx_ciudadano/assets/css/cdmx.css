@@ -304,23 +304,27 @@ h3 {
   margin: auto;
   width: 90%;
   padding-top: 42px;
-  
+  padding-bottom: 100px;  
 }
 
 .contenedor {
   display: flex;
   width: 100%;
   transition: all 0.4s ease;
+  border-radius: 6.6px;
 }
 
 .contenedor .ul {
   width: 100%;
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-left: 0px;
 }
 
 .contenedor .li {
-  padding: 5px;
-  margin: 0 2em 0 0;
+  padding: 8px;
   border-radius: 6.6px;
   cursor: pointer;
   border: 1px solid #BFBFBF;
@@ -331,15 +335,14 @@ h3 {
 }
 
 .contenedor .subcontenedor {
-  min-height: 10vh;
   position: relative;
+  width: 65%;
+  height: fit-content;
+  padding: 20px 70px 20px 36px;
 }
 
 .contenedor .bloque {
-  margin: 1em;
-  padding: 1em;
   position: absolute;
-  top: 20px;
   transition: all 0.4s ease;
   opacity: 0;
 }

@@ -22,22 +22,130 @@
         <p>A continuación encontrarás una guía que te ayudarán a mejorar y validar que la estructura de tus datos sea la adecuada.</p>
     </div>
     <div data-module="check-data" class="contenedor" style="background-color: #F2F2F2;">
-        <div style="background-color: #ffffff; border: 1px solid #BFBFBF;">
+        <div style="background-color: #ffffff; border: 1px solid #BFBFBF; padding: 20px; width: 30%; border-radius: 6.6px; margin: 60px 10px;">
             <h5 style="color: #938F22;">Guía de validación de datos</h5>
             <ul class="ul">
-                <li class="li activo">
-                    <h6>Plantilla general</h6>
-                    <p><i>Descarga la plantilla con recomendaciones de la estructura general de una base de datos.</i></p>
-                    <div><i>Consultar</i><img src="/images/flecha.png" alt="flecha" style="height: 10;"></div>
+                <li class="li activo" style="margin-top: 26px;">
+                    <h6 style="font-size: 15px; font-weight: 600;">Plantilla general</h6>
+                    <p style="font-size: 12px;"><i>Descarga la plantilla con recomendaciones de la estructura general de una base de datos.</i></p>
+                    <div style="display: flex; justify-content: end; gap: 5px; font-size: 12px; align-items: center;"><i>Consultar</i><img src="/images/flecha.png" alt="flecha" style="height: 12px;"></div>
                 </li>
-                <li class="li">Boton 2</li>
-                <li class="li">Boton 3</li>
+                <li class="li" style="margin-top: 26px;">
+                    <h6 style="font-size: 15px; font-weight: 600;">Catálogos de referencia</h6>
+                    <p style="font-size: 12px;"><i>Si tus datos tienen algún componente espacial valida que se ajuste a los catálogos.</i></p>
+                    <div style="display: flex; justify-content: end; gap: 5px; font-size: 12px; align-items: center;"><i>Consultar</i><img src="/images/flecha.png" alt="flecha" style="height: 12px;"></div>
+                </li>
+                <li class="li" style="margin-top: 26px;">
+                    <h6 style="font-size: 15px; font-weight: 600;">Mejora tus fechas</h6>
+                    <p style="font-size: 12px;"><i>Si tus datos tienen fechas o un componente temporal valida el formato.</i></p>
+                    <div style="display: flex; justify-content: end; gap: 5px; font-size: 12px; align-items: center;"><i>Consultar</i><img src="/images/flecha.png" alt="flecha" style="height: 12px;"></div>
+                </li>
+                <li class="li" style="margin-top: 26px;">
+                    <h6 style="font-size: 15px; font-weight: 600;">Validador de datos</h6>
+                    <p style="font-size: 12px;"><i>Valida tus datos con nuestra herramienta para asegurarte de que se pueden cruzar.</i></p>
+                    <div style="display: flex; justify-content: end; gap: 5px; font-size: 12px; align-items: center;"><i>Consultar</i><img src="/images/flecha.png" alt="flecha" style="height: 12px;"></div>
+                </li>
             </ul>
         </div>
         <div class="subcontenedor">
-            <div class="bloque activo">Soy el bloque 1</div>
-            <div class="bloque">Suscríbete</div>
-            <div class="bloque">Sígueme en TikTok</div>
+            <div class="bloque activo">
+                <h5 style="color: #C45633; padding-bottom: 20px;">PLANTILLA GENERAL</h5>
+                <p>Para que tus datos sean más <b>fáciles de interpretar, procesar y utilizar</b> es importante seguir una serie de recomendaciones en cuanto a su estructura y el contenido de sus columnas.</p>
+                <p><i>A continuación podrás descargar una plantilla general que te servirá como guía para subir tus datos.</i></p>             
+                <div style="display: flex; justify-content: space-between; padding: 32px 80px;">
+                    <div style="display: flex; gap: 50px; height: 22px;"><img src="/images/archivo-descarga.png" alt="archivo-descarga"><p><b>Plantilla general de datos</b></p></div>
+                    <button style="background-color: #938F22; border-radius: 4.2px; padding: 4px 10px 4px 10px;"><img src="/images/Union.png" alt="descargar" style="height: 10px;"><span style="color: white; font-size: 12px; padding-left: 5px;">Descargar</span></button>  
+                </div>
+                    
+                <p><i>Consulta también las siguientes recomendaciones generales para tus bases de datos:</i></p>
+                <h6><b>Contenido de las columnas</b></h6>
+                <ol type="1" style="background: none; padding-top: 20px;">
+                    <li>
+                        Para columnas de texto:
+                        <ol type="a" style="background: none;">
+                            <li>En la medida de lo posible, recomendamos que tus columnas de texto tengan un catálogo reducido de posibles valores (Ejemplos).</li>
+                            <li>Las base de datos debe estar codificada en UTF-8 para evitar errores de interpretación de caracteres especiales (alternativamente puedes cargar tu info sin acentos).</li>
+                        </ol>
+                    </li>
+                    <li>
+                        Para columnas numéricas:
+                        <ol type="a" style="background: none;">
+                            <li>Los valores nulos de las variables numéricas deberán estar marcados como "NaN".</li>
+                        </ol>
+                    </li>
+                    <li>
+                        Para columnas de georeferenciación:
+                        <ol type="a" style="background: none;">
+                            <li>La georeferenciación debe estar en dos columnas separadas llamadas "latitud" y "longitud".</li>
+                            <li>Las columnas de georeferencia deben ser de formato numérico.</li>
+                        </ol>
+                    </li>
+                </ol>
+                <h6><b>Estructura de la base</b></h6>
+                <ol type="1" style="background: none;">
+                    <li>
+                        Nombre de las columnas:
+                        <ol type="a" style="background: none;">
+                            <li>En minúsculas, sin espacios ni acentos (sustituir los espacios por guiones bajos).</li>
+                            <li>No pueden repetirse los nombres de las columnas.</li>
+                        </ol>
+                    </li>
+                    <li>
+                        Estructura de categorías:
+                        <ol type="a" style="background: none;">
+                            <li>Es recomendable que tus datos esten en formato largo (long) que ancho (wide).</li>
+                        </ol>
+                    </li>
+                </ol>
+                <p style="padding-top: 25px;"><i>Para más detalles sobre la estructura correcta de las bases puedes descargar la guía completa de validación de datos.</i></p>
+                <button style="background-color: #938F22; border-radius: 4.2px; padding: 4px 10px 4px 10px; margin-top: 20px;"><img src="/images/Union.png" alt="descargar" style="height: 10px;"><span style="color: white; font-size: 12px; padding-left: 5px;">Descargar Guía</span></button>                    
+            </div>
+            <div class="bloque">
+                <h5 style="color: #C45633; padding-bottom: 20px;">CATÁLOGOS DE REFERENCIA</h5>
+                <p>Los catálogos de referencia son documentos que contienen información sobre las opciones de los valores que pueden tomar cada campo o atributo en una base de datos.</p>
+                <p>Ajustar tus datos a los catálogos que se presentan a continuación te permitirá hacer tu información comparable con la información disponible en el 
+                Portal de Datos Abiertos.</p>
+                <p><i>Descarga los siguiente catálogos de referencia para ajustar tu información.</i></p>
+                <div style="display: flex; justify-content: space-between; padding: 10px 5px;">
+                    <div style="display: flex; gap: 20px; height: 22px;"><img src="/images/archivo-descarga.png" alt="archivo-descarga"><p><b>Catálogo de Alcaldías de la Ciudad de México</b></p></div>
+                    <button style="background-color: #938F22; border-radius: 4.2px; padding: 4px 10px 4px 10px;"><img src="/images/Union.png" alt="descargar" style="height: 10px;"><span style="color: white; font-size: 12px; padding-left: 5px;">Descargar</span></button>  
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 10px 5px;">
+                    <div style="display: flex; gap: 20px; height: 22px;"><img src="/images/archivo-descarga.png" alt="archivo-descarga"><p><b>Catálogo de Colonias de la Ciudad de México</b></p></div>
+                    <button style="background-color: #938F22; border-radius: 4.2px; padding: 4px 10px 4px 10px;"><img src="/images/Union.png" alt="descargar" style="height: 10px;"><span style="color: white; font-size: 12px; padding-left: 5px;">Descargar</span></button>  
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 10px 5px;">
+                    <div style="display: flex; gap: 20px; height: 22px;"><img src="/images/archivo-descarga.png" alt="archivo-descarga"><p><b>Catálogo de Localidades de la Ciudad de México</b></p></div>
+                    <button style="background-color: #938F22; border-radius: 4.2px; padding: 4px 10px 4px 10px;"><img src="/images/Union.png" alt="descargar" style="height: 10px;"><span style="color: white; font-size: 12px; padding-left: 5px;">Descargar</span></button>  
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 10px 5px;">
+                    <div style="display: flex; gap: 20px; height: 22px;"><img src="/images/archivo-descarga.png" alt="archivo-descarga"><p><b>Catálogo de AGEB's de la Ciudad de México</b></p></div>
+                    <button style="background-color: #938F22; border-radius: 4.2px; padding: 4px 10px 4px 10px;"><img src="/images/Union.png" alt="descargar" style="height: 10px;"><span style="color: white; font-size: 12px; padding-left: 5px;">Descargar</span></button>  
+                </div>
+                <p><i>Para más detalles sobre los catálogos de referencia puedes descargar la guía completa de validación de datos.</i></p>
+                <button style="background-color: #938F22; border-radius: 4.2px; padding: 4px 10px 4px 10px; margin-top: 20px;"><img src="/images/Union.png" alt="descargar" style="height: 10px;"><span style="color: white; font-size: 12px; padding-left: 5px;">Descargar Guía</span></button>  
+            </div>
+            <div class="bloque">
+                <h5 style="color: #C45633; padding-bottom: 20px;">MEJORA TUS FECHAS</h5>
+                <p>Como un <b>estándar</b> para el repositorio, es importante que las columnas de fecha en tus datos tengan el <b>formato</b> año-mes-día (<b>aaaa-mm-dd</b>), esto permitirá generar gráficas de lineas de tendencia (si así se desea) y cruzar tu base con otros datos del Portal de Datos Abiertos que también tengan un componente temporal. </p>
+                <p><i>Consulta el siguiente video para más detalles.</i></p>
+                <p>&nbsp</p>
+                <p>&nbsp</p>
+                <p>&nbsp</p>
+                <p>&nbsp</p>
+                <p>&nbsp</p>
+                <p>&nbsp</p>
+                <p>Si tus datos no están desagregados de manera diaria sino por otra frecuencia temporal (semana, mensual, etc.) te recomendamos incluir una columna con la fecha de cierre de periodo en formato aaaa-mm-dd como referecnia para el visualizador.</p>
+                <p><i>Para más detalles sobre los formatos de fechas puedes descargar la guía completa con ejemplos.</i></p>
+                <button style="background-color: #938F22; border-radius: 4.2px; padding: 4px 10px 4px 10px; margin-top: 20px;"><img src="/images/Union.png" alt="descargar" style="height: 10px;"><span style="color: white; font-size: 12px; padding-left: 5px;">Descargar guía de fechas</span></button>
+            </div>
+            <div class="bloque">
+                <h5 style="color: #C45633; padding-bottom: 20px;">VALIDADOR DE DATOS</h5>
+                <p>Aqui podrás utilizar nuestra <b>herramienta de validación</b> para obtener un diagnóstico de qué tan bien estructurado se encuentra tu archivo.</p>
+                <p>En caso de que tus datos no se ajusten completamente a los estándares descritos en esta guía, es posible que tus datos no se visualicen correctamente y no puedas cruzarlos con la información del Portal de Datos Abiertos.</p>
+                <a href="/dataset/new"><button style="background-color: #938F22; border-radius: 4.2px; padding: 4px 10px 4px 10px; margin: 80px 100px;"><span style="color: white; font-size: 12px; padding-left: 5px;">Publicar datos</span></button></a>
+                <p>En caso de que el resultado de la validación no sea favorable, es altamente recomendable hacer las modificaciones necesarias de acuerdo con esta guía y validar de nuevo tu archivo.</p>
+            </div>
         </div>
     </div>
 </div>

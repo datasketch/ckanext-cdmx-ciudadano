@@ -1,5 +1,44 @@
 {% extends "page.html" %}
 
 {% block content %}
-<h1 data-h="{{ h }}">hola mundo</h1>
+<!-- <h1 data-h="{{ h }}">hola mundo</h1> -->
+<div class="principal">
+    <div class="flex">
+        <img src="/images/Vector.png" alt="home" style="height: 20px;">
+        <p style="color: #938F22; padding-left: 7px;">/ VALIDA TUS DATOS</p>
+    </div>
+    <h1 class="valida" style="text-align: center; padding-bottom: 20px; color: #938F22;">VALIDA TUS DATOS</h1>
+    <div style="padding-left: 20px;">
+        <p>La información que encontrarás aquí te ayudará a validar o mejorar la estructura de tus datos, lo cual tiene los siguientes beneficios:</p>
+        <ol style="background-color: white;">
+            <li>Podrás <b>cruzar tu información</b> con información del Portal de Datos Abiertos.</li>
+            <li>Podrás <b>generar gráficas y mapas interactivos</b> de tu conjunto de datos con la herramienta de visualización.</li>
+            <li>Tus datos podrán aprovecharse de manera más efectiva por otras personas que utilicen o colaboren en la plataforma.</li>
+        </ol>
+        <div class="alert alert-warning" role="alert" style="position: relative; padding-left: 40px; padding-right: 40px; margin-top: 30px; margin-bottom: 30px;">
+            <img src="/images/warning.png" alt="warning" style="height: 20px; position: absolute; top: 13px; left: 7px;">
+            <p><b>Advertencia</b><br>Si cargas un conjunto de datos que no cumple con las validaciones y características aquí descritas, es posible que los cruces de información no se realicen de manera correcta y tus visualizaciones no sean adecuadas.</p>
+        </div>
+        <p>A continuación encontrarás una guía que te ayudarán a mejorar y validar que la estructura de tus datos sea la adecuada.</p>
+    </div>
+    <div data-module="check-data" class="contenedor" style="background-color: #F2F2F2;">
+        <div style="background-color: #ffffff; border: 1px solid #BFBFBF;">
+            <h5 style="color: #938F22;">Guía de validación de datos</h5>
+            <ul class="ul">
+                <li class="li activo">
+                    <h6>Plantilla general</h6>
+                    <p><i>Descarga la plantilla con recomendaciones de la estructura general de una base de datos.</i></p>
+                    <div><i>Consultar</i><img src="/images/flecha.png" alt="flecha" style="height: 10;"></div>
+                </li>
+                <li class="li">Boton 2</li>
+                <li class="li">Boton 3</li>
+            </ul>
+        </div>
+        <div class="subcontenedor">
+            <div class="bloque activo">Soy el bloque 1</div>
+            <div class="bloque">Suscríbete</div>
+            <div class="bloque">Sígueme en TikTok</div>
+        </div>
+    </div>
+</div>
 {% endblock %}

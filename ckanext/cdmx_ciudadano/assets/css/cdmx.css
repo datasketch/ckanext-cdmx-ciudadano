@@ -297,6 +297,57 @@ h3 {
   font-size: 14px !important;
 }
 
+.principal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  width: 90%;
+  padding-top: 42px;
+  
+}
+
+.contenedor {
+  display: flex;
+  width: 100%;
+  transition: all 0.4s ease;
+}
+
+.contenedor .ul {
+  width: 100%;
+  list-style-type: none;
+}
+
+.contenedor .li {
+  padding: 5px;
+  margin: 0 2em 0 0;
+  border-radius: 6.6px;
+  cursor: pointer;
+  border: 1px solid #BFBFBF;
+}
+
+.contenedor .li.activo {
+  background-color: #E3E3E3;
+}
+
+.contenedor .subcontenedor {
+  min-height: 10vh;
+  position: relative;
+}
+
+.contenedor .bloque {
+  margin: 1em;
+  padding: 1em;
+  position: absolute;
+  top: 20px;
+  transition: all 0.4s ease;
+  opacity: 0;
+}
+
+.contenedor .bloque.activo {
+  opacity: 1;
+}
+
 @media screen and (min-width: 768px) {
   .banner-title {
     font-size: 3rem;

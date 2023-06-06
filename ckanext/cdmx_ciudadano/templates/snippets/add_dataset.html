@@ -1,7 +1,7 @@
 {# Adds 'Add Dataset' button #}
 
 {% set dataset_type = dataset_type if dataset_type else h.default_package_type() %}
-{% set link_label = h.humanize_entity_type('package', dataset_type, 'add link') or _("Add Dataset") %}
+{% set link_label = h.humanize_entity_type('package', dataset_type, 'add link') or _("Agrega conjunto de datos") %}
 {% set route_name = '/validar' %}
 
 {% if group %}

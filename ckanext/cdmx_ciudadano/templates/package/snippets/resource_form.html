@@ -167,3 +167,11 @@ attrs={'class': 'form-control', 'data-module': 'select-field-tabs', 'data-module
   </div>
 </div>
 {% endblock %}
+
+{% block delete_button %}
+      {% if data.id %}
+        {% if h.check_access('resource_delete', {'id': data.id})  %}
+          <a class="btn btn-danger pull-left" href="{% url_for dataset_type ~ '_resource.delete', resource_id=data.id, id=pkg_name %}" data-module="confirm-action2" data-module-content="No estás autorizado para eliminar recursos, si quieres solicitar que se elimine envía un correo con el nombre y enlace del conjunto a datosabiertos@cdmx.gob.mx" data-module-allowed="false">{% block delete_button_text %}{{ _('Delete') }}{% endblock %}</a>
+        {% endif %}
+      {% endif %}
+{% endblock %}

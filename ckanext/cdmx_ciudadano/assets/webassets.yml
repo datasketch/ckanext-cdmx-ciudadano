@@ -22,3 +22,4 @@ cdmx_js:
     - javascript/modules/disclaimer.js
     - javascript/modules/resource-upload-field2.js
     - javascript/modules/check-data.js
+    - javascript/modules/confirm-action2.js

@@ -2,7 +2,7 @@ import mimetypes
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
-from flask import request
+from flask import request, Blueprint
 
 from ckanext.cdmx_ciudadano import blueprint
 
@@ -22,6 +22,36 @@ from ckanext.cdmx_ciudadano.lib import (
     default_package_type
 )
 
+def empty():
+    '''A simple replacement for the flash Home view function.'''
+    extra_vars = {"code": "404", "content": "LOL The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.", "name": "Not Found"}
+    print("**********************************************************++")
+    print(dir(toolkit.current_user))
+
+    return toolkit.render("error_document_template.html", extra_vars)
+
+
+""" def custom_user_create(context, data_dict=None):
+    # TODO: create organization
+    if not bool(data_dict):
+        return { "success": True}
+    print(data_dict)
+    print(context)
+    name = data_dict["name"]
+    # email, fullname, name, image_url
+    print("Creating org")
+    org_data_dict = {
+        "name": "nicolas",
+        "title": data_dict["fullname"],
+        "users": [{ "name": "nicolas", "capacity": "editor"}]
+    }
+    # key = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJEUHhBZmYtQnVHbXdIWUJoZWdZWWpKaHg1YnJmeTNhcnRQYjVsVGlRMTlJIiwiaWF0IjoxNjg2MTczMjk3fQ.AyU9es64RQpGjoi8XigE-1XRmQhjUQVdpEB22SN4Mow"
+    action = toolkit.auth_allow_anonymous_access(toolkit.get_action("organization_create"))
+    result = action({"user": "", "ignore_auth": True}, {"name": "lalaland"})
+    print(result)
+    print("************")
+    print("Org created")
+    return { "success": True } """
 
 class CdmxCiudadanoPlugin(
     plugins.SingletonPlugin, toolkit.DefaultDatasetForm, DefaultTranslation
@@ -34,6 +64,7 @@ class CdmxCiudadanoPlugin(
     plugins.implements(plugins.IFacets)
     plugins.implements(plugins.IMiddleware)
     plugins.implements(plugins.IBlueprint)
+    """ plugins.implements(plugins.IAuthFunctions) """
     # plugins.implements(plugins.IPackageController)
 
     # IMiddleware
@@ -162,7 +193,21 @@ class CdmxCiudadanoPlugin(
         return facets_dict
     
     def get_blueprint(self):
-        return blueprint.validate
+        bp = Blueprint("disable_urls", __name__)
+        print("************************* here *****************************************")
+        routes = [
+            "/api-tokens"
+        ]
+        for route in routes:
+            bp.add_url_rule(route, view_func=empty)
+
+        return [blueprint.validate]
+        """ return blueprint.validate """
+
+"""     def get_auth_functions(self):
+        return  {
+            "user_create": custom_user_create
+        } """
 
     # IPackageController
 

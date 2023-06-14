@@ -319,7 +319,7 @@ h3 {
   list-style-type: none;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
   padding-left: 0px;
 }
 
@@ -344,11 +344,11 @@ h3 {
 .contenedor .bloque {
   position: absolute;
   transition: all 0.4s ease;
-  opacity: 0;
+  display: none;
 }
 
 .contenedor .bloque.activo {
-  opacity: 1;
+  display: block;
 }
 
 @media screen and (min-width: 768px) {

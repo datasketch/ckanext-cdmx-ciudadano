@@ -12,6 +12,7 @@
       </h2>
     {% endif %}
     {% block inner %}
+    <p>{{ organization.users }} </p>
       {% block image %}
         <div class="mb-3">
           <a href="{{ url }}">
@@ -35,7 +36,7 @@
             <a class="text-aqua" href="{{ h.url_for('user.read', id=organization.users[0].id) }}">Leer más</a>
           </p>
         {% else %}
-          <p class="empty">{{ h.humanize_entity_type('organization', organization.type, 'no description') or _('There is no description for this dependencia') }}</p>
+          <p class="empty">{{ h.humanize_entity_type('organization', organization.type, 'no description') or _('There is no description for this organization') }}</p>
         {% endif %}
       {% endblock %}
     {% endblock %}

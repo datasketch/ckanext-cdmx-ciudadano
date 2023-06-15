@@ -15,27 +15,27 @@
       {% block image %}
         <div class="mb-3">
           <a href="{{ url }}">
-            <img class="img-fluid" src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ organization.name }}" style="height: 120px; width: 100%; object-fit: scale-down;" />
+            <img class="img-fluid" src="{{ organization.users[0].image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ organization.name }}" style="height: 120px; width: 100%; object-fit: scale-down;" />
           </a>
         </div>
       {% endblock %}
       {% block heading %}
-        <h1 class="text-base font-weight-bold">{{ organization.title or organization.name }}
+        <h1 class="text-base font-weight-bold">{{ organization.users[0].display_name }}
           {% if organization.state == 'deleted' %}
             [{{ _('Deleted') }}]
           {% endif %}
         </h1>
       {% endblock %}
       {% block description %}
-        {% if organization.description %}
+        {% if organization.users[0].about %}
           <p class="description text-sm">
-            {{ h.markdown_extract(organization.description, 180) }}
+            {{ h.markdown_extract(organization.users[0].about, 180) }}
           </p>
           <p class="read-more">
-            <a class="text-aqua" href="{{ h.url_for('%s.about' % organization.type, id=organization.name) }}">Leer más</a>
+            <a class="text-aqua" href="{{ h.url_for('user.read', id=organization.users[0].id) }}">Leer más</a>
           </p>
         {% else %}
-          <p class="empty">{{ h.humanize_entity_type('organization', organization.type, 'no description') or _('There is no description for this organization') }}</p>
+          <p class="empty">{{ h.humanize_entity_type('organization', organization.type, 'no description') or _('There is no description for this dependencia') }}</p>
         {% endif %}
       {% endblock %}
     {% endblock %}

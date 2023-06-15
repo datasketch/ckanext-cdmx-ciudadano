@@ -31,27 +31,21 @@ def empty():
     return toolkit.render("error_document_template.html", extra_vars)
 
 
-""" def custom_user_create(context, data_dict=None):
-    # TODO: create organization
-    if not bool(data_dict):
-        return { "success": True}
-    print(data_dict)
-    print(context)
-    name = data_dict["name"]
-    # email, fullname, name, image_url
-    print("Creating org")
-    org_data_dict = {
-        "name": "nicolas",
-        "title": data_dict["fullname"],
-        "users": [{ "name": "nicolas", "capacity": "editor"}]
-    }
-    # key = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJEUHhBZmYtQnVHbXdIWUJoZWdZWWpKaHg1YnJmeTNhcnRQYjVsVGlRMTlJIiwiaWF0IjoxNjg2MTczMjk3fQ.AyU9es64RQpGjoi8XigE-1XRmQhjUQVdpEB22SN4Mow"
-    action = toolkit.auth_allow_anonymous_access(toolkit.get_action("organization_create"))
-    result = action({"user": "", "ignore_auth": True}, {"name": "lalaland"})
-    print(result)
-    print("************")
-    print("Org created")
-    return { "success": True } """
+def on_user_show(context, data_dict):
+    id = data_dict.get("id")
+    cp = context.copy()
+    action = toolkit.get_action("organization_list_for_user")
+    orgs = action(cp, {"id": id})
+    print(data_dict.get("user_obj"))
+    if len(orgs) == 0:
+        info = {
+            "id": id,
+            "name": data_dict.get("id"),
+            "users": [{"name": id, "capacity": "editor"}],
+        }
+        toolkit.get_action("organization_create")(cp, info)
+
+    return {"success": True}
 
 class CdmxCiudadanoPlugin(
     plugins.SingletonPlugin, toolkit.DefaultDatasetForm, DefaultTranslation
@@ -64,7 +58,7 @@ class CdmxCiudadanoPlugin(
     plugins.implements(plugins.IFacets)
     plugins.implements(plugins.IMiddleware)
     plugins.implements(plugins.IBlueprint)
-    """ plugins.implements(plugins.IAuthFunctions) """
+    plugins.implements(plugins.IAuthFunctions)
     # plugins.implements(plugins.IPackageController)
 
     # IMiddleware
@@ -204,10 +198,9 @@ class CdmxCiudadanoPlugin(
         return [blueprint.validate]
         """ return blueprint.validate """
 
-"""     def get_auth_functions(self):
-        return  {
-            "user_create": custom_user_create
-        } """
+# IAuthFunctions
+    def get_auth_functions(self):
+        return {"user_show": on_user_show}
 
     # IPackageController
 

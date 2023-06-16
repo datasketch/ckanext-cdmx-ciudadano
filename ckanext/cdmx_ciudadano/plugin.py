@@ -32,6 +32,7 @@ def empty():
 
 
 def on_user_show(context, data_dict):
+    print(data_dict)
     id = data_dict.get("id")
     cp = context.copy()
     action = toolkit.get_action("organization_list_for_user")

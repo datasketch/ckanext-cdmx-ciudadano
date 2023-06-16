@@ -23,3 +23,4 @@ cdmx_js:
     - javascript/modules/resource-upload-field2.js
     - javascript/modules/check-data.js
     - javascript/modules/confirm-action2.js
+    - javascript/modules/join-vars.js

@@ -47,7 +47,7 @@ value=data.format, error=errors.format, classes=['control-medium'], attrs=format
 
 <h3 class="mt-5 mb-4" style="padding-top: 20px;"><u>CRUZA TU INFO</u></h3>
 
-<div>
+<div data-module="join-vars">
   <p>¿TU BASE DE DATOS CUMPLE CON LOS CRITERIOS DE ESTRUCTURA Y LIMPIEZA DE DATOS PARA PODER CRUZARSE CON OTRAS BASES?
   </p>
   <p><a href="#" style="color: #1ACD37;
@@ -74,7 +74,7 @@ value=data.format, error=errors.format, classes=['control-medium'], attrs=format
   <div style="gap: 12px; display: grid; grid-template-rows: repeat(3, 1fr); grid-template-columns: repeat(2, 100PX); ">
     {% for choice in h.get_join_vars() %}
     <label for="{{choice['value']}}" class="d-inline-flex clean-label" style="gap: 4px; font-weight: normal;">
-      <input type="radio" name="join_vars" id="{{choice['value']}}" value="{{choice['value']}}" {% if choice["value"]
+      <input type="checkbox" name="join_vars" id="{{choice['value']}}" value="{{choice['value']}}" disabled {% if choice["value"]
         in join_vars_list %}checked{% endif %}>
       <span>{{ choice['text']}} </span>
     </label>

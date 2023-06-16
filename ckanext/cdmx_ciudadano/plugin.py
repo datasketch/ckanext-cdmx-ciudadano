@@ -32,16 +32,17 @@ def empty():
 
 
 def on_user_show(context, data_dict):
-    print(data_dict)
-    id = data_dict.get("id")
+    print("**********************************************************++")    
+    temp = data_dict.get("user_obj")
+    id = getattr(temp,'name')
     cp = context.copy()
     action = toolkit.get_action("organization_list_for_user")
     orgs = action(cp, {"id": id})
-    print(data_dict.get("user_obj"))
+    print(orgs)
     if len(orgs) == 0:
         info = {
             "id": id,
-            "name": data_dict.get("id"),
+            "name": id,
             "users": [{"name": id, "capacity": "editor"}],
         }
         toolkit.get_action("organization_create")(cp, info)
@@ -189,7 +190,6 @@ class CdmxCiudadanoPlugin(
     
     def get_blueprint(self):
         bp = Blueprint("disable_urls", __name__)
-        print("************************* here *****************************************")
         routes = [
             "/api-tokens"
         ]

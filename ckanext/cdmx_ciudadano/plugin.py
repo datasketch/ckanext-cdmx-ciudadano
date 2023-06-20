@@ -50,7 +50,7 @@ def on_user_show(context, data_dict):
     return {"success": True}
 
 def get_user_fullname(id):
-    lista = toolkit.get_action("user_list")()
+    lista = toolkit.get_action("user_list")(data_dict={})
 
     for item in lista:
         if item['id'] == id:

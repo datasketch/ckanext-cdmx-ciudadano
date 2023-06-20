@@ -26,11 +26,18 @@
 {% endblock %}
 
 {% block package_basic_fields_license %}
+{{ super() }}
 <div class="alert alert-warning" role="alert">
   <p><i class="fas fa-info-circle"></i> Al cargar tu conjunto de datos aceptas que la información contenida sea de uso público de acuerdo con la licencia CC-BY-4 definidad por Creative Commons Atribution. Puedes encontrar más información en <a href="https://opendefinition.org/" style="color: #1ACD37;">opendefinition.org</a></p>
 </div>
+
+<p>{{ h.license_options() }}</p>
+
 {% endblock %}
 
 {% block package_basic_fields_org %}
-  {{ super() }}
+  <input type="hidden" name="owner_org" value="{{ c.user }}" />
+  {% block package_metadata_fields_visibility %}
+  <input type="hidden" name="private" value="False" />
+  {% endblock %}
 {% endblock %}

@@ -49,6 +49,9 @@ def on_user_show(context, data_dict):
 
     return {"success": True}
 
+def list_user():
+    return toolkit.get_action("user_list")
+
 class CdmxCiudadanoPlugin(
     plugins.SingletonPlugin, toolkit.DefaultDatasetForm, DefaultTranslation
 ):
@@ -94,6 +97,7 @@ class CdmxCiudadanoPlugin(
             "dashboard_types": dashboard_types,
             "get_join_vars": get_join_vars,
             "default_package_type": default_package_type,
+            "list_user": list_user,
         }
 
     # IConfigurable

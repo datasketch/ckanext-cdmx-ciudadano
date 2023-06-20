@@ -50,11 +50,8 @@
       {% endif %}
       <p class="card-text">
         <strong>{{ _('Publicador') }}:</strong> <a class="text-aqua2"
-          href="/user/{{ package.creator_user_id }}">{{
-          package.author }}</a>
+          href="/user/{{ package.creator_user_id }}">{{ h.get_user_fullname(package.creator_user_id) }}</a>
       </p>
-      <!-- <p>{{ package }}</p>
-      <p>{{ h.list_user() }}</p> -->
     </div>
   </div>
 </div>

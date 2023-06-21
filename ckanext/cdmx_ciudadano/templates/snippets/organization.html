@@ -1,5 +1,11 @@
 {% ckan_extends %}
 
+{% if organization.users %}
+  {% set has_users = true %}
+{% else %}
+  {% set has_users = false %}
+{% endif %}
+
 {% block info %}
   <section>
     {% if has_context_title %}
@@ -11,12 +17,11 @@
         {{ _('Organization') }}
       </h2>
     {% endif %}
-    {% block inner %}<!-- 
-    <p>{{ organization.users }} </p> -->
+    {% block inner %}
       {% block image %}
         <div class="mb-3">
-          <a href="{{ url }}">
-            <img class="img-fluid" src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ organization.name }}" style="height: 120px; width: 100%; object-fit: scale-down;" />
+          <a {% if has_users %}href="{{ h.url_for('user.read', id=organization.users[0].id) }}"{% endif %}>
+            <img class="img-fluid" {% if has_users %}src="{{ organization.users[0].image_display_url or h.url_for_static('/base/images/placeholder-organization.png' }}"{% else %}src="{{ h.url_for_static('/base/images/placeholder-organization.png')}}"{% endif %} alt="{{ organization.name }}" style="height: 120px; width: 100%; object-fit: scale-down;" />
           </a>
         </div>
       {% endblock %}
@@ -32,9 +37,11 @@
           <p class="description text-sm">
             {{ h.markdown_extract(organization.description, 180) }}
           </p>
+          {% if has_users %}
           <p class="read-more">
             <a class="text-aqua" href="{{ h.url_for('user.read', id=organization.users[0].id) }}">Leer más</a>
           </p>
+          {% endif %}
         {% else %}
           <p class="empty">{{ h.humanize_entity_type('organization', organization.type, 'no description') or _('There is no description for this organization') }}</p>
         {% endif %}

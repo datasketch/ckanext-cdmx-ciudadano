@@ -32,7 +32,8 @@ def empty():
 
 
 def on_user_show(context, data_dict):
-    print("**********************************************************++")    
+    print("**********************************************************++")
+    print(data_dict)
     temp = data_dict.get("user_obj")
     id = getattr(temp,'name')
     cp = context.copy()
@@ -43,6 +44,9 @@ def on_user_show(context, data_dict):
         info = {
             "id": id,
             "name": id,
+            "description": getattr(temp,'about'),
+            "display_name": getattr(temp,'fullname'),
+            "image_url": getattr(temp,'image_url'),
             "users": [{"name": id, "capacity": "editor"}],
         }
         toolkit.get_action("organization_create")(cp, info)

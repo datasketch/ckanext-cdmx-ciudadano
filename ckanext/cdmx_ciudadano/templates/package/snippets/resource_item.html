@@ -14,10 +14,17 @@
       <i class="fas fa-cloud-download-alt"></i>
       <span class="ml-1">{{ h.get_translated(res, 'format') }}</span>
     </span>
-    {% if res.last_modified %}
-      <p class="mt-2 mb-0 mt-md-0"><strong>Última Actualización</strong>: {{ h.humanize_date(res.last_modified) }}</p>
-    {% endif %}
+    
   </div>
+  {% if res.join_vars %}
+  <div class="flex" style="color: #938F22; gap: 10px; align-items: center; padding-top: 8px;">
+    {% set join_vars_list = [res.join_vars] if res.join_vars is string else res.join_vars %}
+    <div style="padding-right: 5px;"><b>Variables para cruce:</b></div>
+    {% for var in join_vars_list %}
+    <div style="border: 1px solid #938F22; border-radius: 15px; padding: 1px 12px;">{{ var[0]|upper }}{{ var[1:] }}</div>
+    {% endfor %}
+  </div>
+  {% endif %}
   {% block resource_item_description %}
     {% if res.description %}
       <p class="text-base mt-3 mb-0">

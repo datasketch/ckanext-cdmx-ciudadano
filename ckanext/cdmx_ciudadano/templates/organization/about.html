@@ -1,3 +1,4 @@
+{% if c.userobj.sysadmin %}
 {% ckan_extends %}
 
 {%- block content %}
@@ -29,3 +30,8 @@
     {% endblock %}
   </div>
 {% endblock -%}
+{% elif c.userobj %}
+{{ h.abort(403, "No estás autorizado.") }}
+{% else %}
+{{ h.abort(404, "La URL solicitada no se encontró en el servidor.") }}
+{% endif %}

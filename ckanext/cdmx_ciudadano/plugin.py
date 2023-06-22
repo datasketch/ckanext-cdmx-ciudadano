@@ -40,16 +40,19 @@ def on_user_show(context, data_dict):
     action = toolkit.get_action("organization_list_for_user")
     orgs = action(cp, {"id": id})
     print(orgs)
-    if len(orgs) == 0:
-        info = {
-            "id": id,
-            "name": id,
-            "description": getattr(temp,'about'),
-            "display_name": getattr(temp,'fullname'),
-            "image_url": getattr(temp,'image_url'),
-            "users": [{"name": id, "capacity": "editor"}],
-        }
-        toolkit.get_action("organization_create")(cp, info)
+    try:
+        if len(orgs) == 0:
+            info = {
+                "id": id,
+                "name": id,
+                "description": getattr(temp,'about'),
+                "display_name": getattr(temp,'fullname'),
+                "image_url": getattr(temp,'image_url'),
+                "users": [{"name": id, "capacity": "editor"}],
+            }
+            toolkit.get_action("organization_create")(cp, info)
+    except:
+        pass
 
     return {"success": True}
 
@@ -61,6 +64,11 @@ def get_user_fullname(id):
             return item['fullname']
     
     return "No existe"
+
+def abort(cod, msg=""):
+    toolkit.abort(cod, msg)
+
+    return
 
 class CdmxCiudadanoPlugin(
     plugins.SingletonPlugin, toolkit.DefaultDatasetForm, DefaultTranslation
@@ -108,6 +116,7 @@ class CdmxCiudadanoPlugin(
             "get_join_vars": get_join_vars,
             "default_package_type": default_package_type,
             "get_user_fullname": get_user_fullname,
+            "abort": abort,
         }
 
     # IConfigurable

@@ -1,3 +1,4 @@
+{% if c.userobj.sysadmin %}
 {% ckan_extends %}
 
 {%- block content %}
@@ -53,5 +54,8 @@
     {{ page.pager(q=q, symbol_first="Inicio", symbol_last="Final", symbol_previous="Anterior", symbol_next="Siguiente", format='<div class="pagination-wrapper"><ul class="pagination pagination-center">$link_first $link_previous ~2~ $link_next $link_last</ul></div>') }}
   </div>
 {% endblock %}
-
-
+{% elif c.userobj %}
+{{ h.abort(403, "No estás autorizado.") }}
+{% else %}
+{{ h.abort(404, "La URL solicitada no se encontró en el servidor.") }}
+{% endif %}

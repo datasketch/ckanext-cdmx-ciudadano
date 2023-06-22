@@ -1,3 +1,4 @@
+{% if c.userobj.sysadmin %}
 {% extends "page.html" %}
 
 {% block subtitle %}{{ _("Confirm Delete") }}{% endblock %}
@@ -21,3 +22,6 @@
     </div>
   </section>
 {% endblock %}
+{% else %}
+{{ h.abort(403, "No estás autorizado.") }}
+{% endif %}

@@ -8,15 +8,9 @@
 
 {% block info %}
   <section>
-    {% if has_context_title %}
       <h2 class="text-base text-aqua font-weight-bold mb-2">
-        {{ h.humanize_entity_type('organization', organization.type, 'sidebar label') or _('Organization') }}
-      </h2>
-    {% else %}
-      <h2 class="text-base text-aqua font-weight-bold mb-2">
-        {{ _('Organization') }}
-      </h2>
-    {% endif %}
+        {{ _('Publicador') }}
+      </h2>    
     {% block inner %}
       {% block image %}
         <div class="mb-3">

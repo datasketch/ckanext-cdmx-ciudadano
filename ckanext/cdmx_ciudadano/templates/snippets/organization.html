@@ -21,7 +21,7 @@
       {% block image %}
         <div class="mb-3">
           <a {% if has_users %}href="{{ h.url_for('user.read', id=organization.users[0].id) }}"{% endif %}>
-            <img class="img-fluid" {% if has_users %}src="{{ organization.users[0].image_display_url or h.url_for_static('/base/images/placeholder-organization.png' }}"{% else %}src="{{ h.url_for_static('/base/images/placeholder-organization.png')}}"{% endif %} alt="{{ organization.name }}" style="height: 120px; width: 100%; object-fit: scale-down;" />
+            <img class="img-fluid" {% if has_users %}src="{{ organization.users[0].image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}"{% else %}src="{{ h.url_for_static('/base/images/placeholder-organization.png')}}"{% endif %} alt="{{ organization.name }}" style="height: 120px; width: 100%; object-fit: scale-down;" />
           </a>
         </div>
       {% endblock %}

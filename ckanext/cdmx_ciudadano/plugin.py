@@ -191,7 +191,11 @@ class CdmxCiudadanoPlugin(
     # IFacets
 
     def dataset_facets(self, facets_dict, package_type):
-        facets_dict.pop("tags")
+        print(facets_dict)
+        facets_dict.pop("organization")
+        facets_dict.pop("license_id")
+        facets_dict['groups'] = 'Categorías'
+        print(facets_dict)
         return facets_dict
 
     def group_facets(self, facets_dict, group_type, package_type):

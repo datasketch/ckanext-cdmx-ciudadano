@@ -8,7 +8,7 @@
   visualizaciones</p>
 
 {% block basic_fields_url %}
-<div {% if is_edit %}style="pointer-events: none;"{% endif %}>
+<div {% if is_edit and not c.userobj.sysadmin %}style="pointer-events: none;"{% endif %}>
   {% set is_upload = (data.url_type == 'upload') %}
   {% snippet 'package/snippets/resource_upload_field.html',
   data=data,
@@ -36,7 +36,7 @@ the data'), value=data.description, error=errors.description) }}
 {% endblock %}
 
 {% block basic_fields_format %}
-<div {% if is_edit %}style="pointer-events: none;"{% endif %}>
+<div {% if is_edit and not c.userobj.sysadmin %}style="pointer-events: none;"{% endif %}>
   {% set format_attrs = {'data-module': 'autocomplete', 'data-module-source':
   '/api/2/util/resource/format_autocomplete?incomplete=?'} %}
   {% call form.input('format', id='field-format', label=_('FORMATO'), placeholder=_('eg. CSV, XML or JSON'),

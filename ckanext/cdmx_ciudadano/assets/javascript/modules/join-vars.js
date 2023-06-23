@@ -17,6 +17,7 @@ ckan.module('join-vars', function (jQuery) {
                 } else {
                     this.options.forEach(ele => {
                         ele.disabled = true
+                        ele.checked = false
                     })
                 }
             })

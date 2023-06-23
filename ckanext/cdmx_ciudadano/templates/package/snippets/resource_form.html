@@ -8,6 +8,7 @@
   visualizaciones</p>
 
 {% block basic_fields_url %}
+<div {% if is_edit %}style="pointer-events: none;"{% endif %}>
   {% set is_upload = (data.url_type == 'upload') %}
   {% snippet 'package/snippets/resource_upload_field.html',
   data=data,
@@ -18,6 +19,7 @@
   url_label=_('URL'),
   upload_label=_('File'),
   placeholder=_('http://example.com/external-data.csv') %}
+</div>
 {% endblock %}
 
 {% block basic_fields_name %}
@@ -34,20 +36,23 @@ the data'), value=data.description, error=errors.description) }}
 {% endblock %}
 
 {% block basic_fields_format %}
-{% set format_attrs = {'data-module': 'autocomplete', 'data-module-source':
-'/api/2/util/resource/format_autocomplete?incomplete=?'} %}
-{% call form.input('format', id='field-format', label=_('FORMATO'), placeholder=_('eg. CSV, XML or JSON'),
-value=data.format, error=errors.format, classes=['control-medium'], attrs=format_attrs) %}
-<span class="info-block info-block-small">
-  <i class="fa fa-info-circle"></i>
-  {{ _('This will be guessed automatically. Leave blank if you wish') }}
-</span>
-{% endcall %}
+<div {% if is_edit %}style="pointer-events: none;"{% endif %}>
+  {% set format_attrs = {'data-module': 'autocomplete', 'data-module-source':
+  '/api/2/util/resource/format_autocomplete?incomplete=?'} %}
+  {% call form.input('format', id='field-format', label=_('FORMATO'), placeholder=_('eg. CSV, XML or JSON'),
+  value=data.format, error=errors.format, classes=['control-medium'], attrs=format_attrs) %}
+  <span class="info-block info-block-small">
+    <i class="fa fa-info-circle"></i>
+    {{ _('This will be guessed automatically. Leave blank if you wish') }}
+  </span>
+  {% endcall %}
+</div>
 {% endblock %}
 
 <h3 class="mt-5 mb-4" style="padding-top: 20px;"><u>CRUZA TU INFO</u></h3>
 
 <div data-module="join-vars">
+  <p>{{ is_edit }}</p>
   <p>¿TU BASE DE DATOS CUMPLE CON LOS CRITERIOS DE ESTRUCTURA Y LIMPIEZA DE DATOS PARA PODER CRUZARSE CON OTRAS BASES?
   </p>
   <p><a href="#" style="color: #1ACD37;
@@ -74,7 +79,7 @@ value=data.format, error=errors.format, classes=['control-medium'], attrs=format
   <div style="gap: 12px; display: grid; grid-template-rows: repeat(3, 1fr); grid-template-columns: repeat(2, 100PX); ">
     {% for choice in h.get_join_vars() %}
     <label for="{{choice['value']}}" class="d-inline-flex clean-label" style="gap: 4px; font-weight: normal;">
-      <input type="checkbox" name="join_vars" id="{{choice['value']}}" value="{{choice['value']}}" disabled {% if choice["value"]
+      <input type="checkbox" name="join_vars" id="{{choice['value']}}" value="{{choice['value']}}" {% if not data.meet_criteria == "true" %}disabled{% endif %} {% if choice["value"]
         in join_vars_list %}checked{% endif %}>
       <span>{{ choice['text']}} </span>
     </label>
@@ -171,7 +176,7 @@ attrs={'class': 'form-control', 'data-module': 'select-field-tabs', 'data-module
 {% block delete_button %}
       {% if data.id %}
         {% if h.check_access('resource_delete', {'id': data.id})  %}
-          <a class="btn btn-danger pull-left" href="{% url_for dataset_type ~ '_resource.delete', resource_id=data.id, id=pkg_name %}" data-module="confirm-action2" data-module-content="No estás autorizado para eliminar recursos, si quieres solicitar que se elimine envía un correo con el nombre y enlace del conjunto a datosabiertos@cdmx.gob.mx" data-module-allowed="false">{% block delete_button_text %}{{ _('Delete') }}{% endblock %}</a>
+          <a class="btn btn-danger pull-left" href="{% url_for dataset_type ~ '_resource.delete', resource_id=data.id, id=pkg_name %}" data-module="confirm-action2" data-module-content="No estás autorizado para eliminar recursos, si quieres solicitar que se elimine envía un correo con el nombre y enlace del conjunto a datosabiertos@cdmx.gob.mx" data-module-allowed={% if c.userobj.sysadmin %}"true"{% else %}"false"{% endif %}>{% block delete_button_text %}{{ _('Delete') }}{% endblock %}</a>
         {% endif %}
       {% endif %}
 {% endblock %}

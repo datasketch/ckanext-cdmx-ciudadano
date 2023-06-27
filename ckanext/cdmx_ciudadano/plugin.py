@@ -70,6 +70,11 @@ def abort(cod, msg=""):
 
     return
 
+def get_groups(all):
+    lista = toolkit.get_action("group_list")(data_dict={"all_fields": all})
+
+    return lista
+
 class CdmxCiudadanoPlugin(
     plugins.SingletonPlugin, toolkit.DefaultDatasetForm, DefaultTranslation
 ):
@@ -116,6 +121,7 @@ class CdmxCiudadanoPlugin(
             "get_join_vars": get_join_vars,
             "default_package_type": default_package_type,
             "get_user_fullname": get_user_fullname,
+            "get_groups": get_groups,
             "abort": abort,
         }
 
@@ -129,6 +135,7 @@ class CdmxCiudadanoPlugin(
             "licenses_group_url"
         ] = "https://raw.githubusercontent.com/datosabiertoscdmx/licencias-portal/main/licencias-portal-cdmx.json"
         config["ckan.locale_default"] = "es"
+        config["ckan.favicon"] = "favicon_adip.ico"
 
     # IConfigurer
 

@@ -20,7 +20,6 @@
   </div>
   <!-- <p>{{ h.groups_available() }}</p>
   <p>{{ h.get_groups(true) }}</p> -->
-  <p>{{ h.organizations_available('create_dataset') }}</p>
 {% endblock %}
 
 {% block package_basic_fields_tags %}
@@ -37,7 +36,24 @@
 {% endblock %}
 
 {% block package_basic_fields_org %}
-  <input type="hidden" name="owner_org" value={% if c.userobj.sysadmin %}"a0ae49ca-5905-454c-b6e1-75ed26901fa4"{% else %}"{{ c.user }}"{% endif %} />
+  {% if c.userobj.sysadmin %}
+  {% set existing_org = data.owner_org or data.group_id %}
+  {% set organizations_available = h.organizations_available('create_dataset') %}
+  <div class="form-group control-medium">
+    <label for="field-organizations" class="form-label">ORGANIZACION</label>
+    <div class="controls">
+      <select id="field-organizations" name="owner_org" data-module="autocomplete">
+        {% for organization in organizations_available %}
+          {# get out first org from users list only if there is not an existing org #}
+        {% set selected_org = (existing_org and existing_org == organization.id) or (not existing_org and not data.id and organization.id == organizations_available[0].id) %}
+        <option value="{{ organization.id }}" {% if selected_org %} selected="selected" {% endif %}>{{ organization.display_name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+  {% else %}
+  <input type="hidden" name="owner_org" value="{{ c.user }}" />
+  {% endif %}
   {% block package_metadata_fields_visibility %}
   <input type="hidden" name="private" value="False" />
   {% endblock %}

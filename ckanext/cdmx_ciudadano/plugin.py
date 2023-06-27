@@ -32,15 +32,13 @@ def empty():
 
 
 def on_user_show(context, data_dict):
-    print("**********************************************************++")
-    print(data_dict)
-    temp = data_dict.get("user_obj")
-    id = getattr(temp,'name')
-    cp = context.copy()
-    action = toolkit.get_action("organization_list_for_user")
-    orgs = action(cp, {"id": id})
-    print(orgs)
+    
     try:
+        temp = data_dict.get("user_obj")
+        id = getattr(temp,'name')
+        cp = context.copy()
+        action = toolkit.get_action("organization_list_for_user")
+        orgs = action(cp, {"id": id})
         if len(orgs) == 0:
             info = {
                 "id": id,

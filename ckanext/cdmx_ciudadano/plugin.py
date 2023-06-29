@@ -32,11 +32,28 @@ def empty():
 
 
 def on_user_show(context, data_dict):
-    
+    print("**********************************************************")
     try:
+        """ print("**********************************************************")
+        print(data_dict)
+        print("**********************************************************")
+        print(context) """
         temp = data_dict.get("user_obj")
         id = getattr(temp,'name')
         cp = context.copy()
+        """ action1 = toolkit.get_action("group_list_authz")
+        groups_auth = action1(cp, {"id": id})
+        print(groups_auth)
+        if len(groups_auth) == 0:
+            lista = toolkit.get_action("group_list")(data_dict={"all_fields": True})
+            for group in lista:
+                info = {
+                    "id": group["id"],
+                    "username": id,
+                    "role": "member",
+                }
+                act = toolkit.get_action("group_member_create")(data_dict=info)
+                print(act) """
         action = toolkit.get_action("organization_list_for_user")
         orgs = action(cp, {"id": id})
         if len(orgs) == 0:
@@ -49,7 +66,8 @@ def on_user_show(context, data_dict):
                 "users": [{"name": id, "capacity": "editor"}],
             }
             toolkit.get_action("organization_create")(cp, info)
-    except:
+    except Exception as e:
+        print(e)
         pass
 
     return {"success": True}

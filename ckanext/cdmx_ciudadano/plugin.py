@@ -4,6 +4,7 @@ import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
 from flask import request, Blueprint
 
+
 from ckanext.cdmx_ciudadano import blueprint
 
 from ckanext.cdmx_ciudadano.lib import (
@@ -30,30 +31,29 @@ def empty():
 
     return toolkit.render("error_document_template.html", extra_vars)
 
+def only_id(ele):
+    return ele["id"]
 
 def on_user_show(context, data_dict):
     print("**********************************************************")
     try:
-        """ print("**********************************************************")
-        print(data_dict)
-        print("**********************************************************")
-        print(context) """
         temp = data_dict.get("user_obj")
         id = getattr(temp,'name')
         cp = context.copy()
-        """ action1 = toolkit.get_action("group_list_authz")
+        cp["ignore_auth"] = True
+        action1 = toolkit.get_action("group_list_authz")
         groups_auth = action1(cp, {"id": id})
-        print(groups_auth)
-        if len(groups_auth) == 0:
-            lista = toolkit.get_action("group_list")(data_dict={"all_fields": True})
+        lista = toolkit.get_action("group_list")(data_dict={"all_fields": True})
+        if len(lista) - len(groups_auth) > 0:
             for group in lista:
-                info = {
-                    "id": group["id"],
-                    "username": id,
-                    "role": "member",
-                }
-                act = toolkit.get_action("group_member_create")(data_dict=info)
-                print(act) """
+                if group["id"] not in list(map(only_id, groups_auth)):
+                    info = {
+                        "id": group["id"],
+                        "username": id,
+                        "role": "member",
+                    }
+                    act = toolkit.auth_allow_anonymous_access(toolkit.get_action("group_member_create"))
+                    act(context=cp, data_dict=info)
         action = toolkit.get_action("organization_list_for_user")
         orgs = action(cp, {"id": id})
         if len(orgs) == 0:

@@ -1,3 +1,4 @@
+{% if not c.userobj %}  
 {% import "macros/form.html" as form %}
 
 {% block form %}
@@ -40,3 +41,6 @@
     </div>
   </form>
 {% endblock %}
+{% else %}
+<meta http-equiv="refresh" content="0; URL='/user/me'" /> 
+{% endif %}

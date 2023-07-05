@@ -1,3 +1,4 @@
+{% if c.userobj.sysadmin %}
 {% ckan_extends %}
 
 {%- block content %}
@@ -85,5 +86,8 @@
     {% endblock %}
   </div>
 {% endblock -%}
+{% else %}
+{{ h.abort(403, "No estás autorizado.") }}
+{% endif %}
 
 

@@ -26,7 +26,6 @@ from ckanext.cdmx_ciudadano.lib import (
 def empty():
     '''A simple replacement for the flash Home view function.'''
     extra_vars = {"code": "404", "content": "LOL The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.", "name": "Not Found"}
-    print("**********************************************************++")
     print(dir(toolkit.current_user))
 
     return toolkit.render("error_document_template.html", extra_vars)
@@ -35,7 +34,6 @@ def only_id(ele):
     return ele["id"]
 
 def on_user_show(context, data_dict):
-    print("**********************************************************")
     try:
         temp = data_dict.get("user_obj")
         id = getattr(temp,'name')

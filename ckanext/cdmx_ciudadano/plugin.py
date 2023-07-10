@@ -84,8 +84,8 @@ def abort(cod, msg=""):
 
     return
 
-def get_groups(all):
-    lista = toolkit.get_action("group_list")(data_dict={"all_fields": all})
+def get_groups():
+    lista = toolkit.get_action("group_list")(data_dict={"all_fields": True})
 
     return lista
 

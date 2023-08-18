@@ -73,7 +73,7 @@
             <div class="aspect-16-by-9">
               {% set site_url = h.get_site_url() %}
               {% if site_url == 'https://dev.datosciudadanos.cdmx.gob.mx' %}
-                {% set iframe_src = 'https://datasketch.shinyapps.io/cdmxHighlight/_/?ckanConf=' + res.id %}
+                {% set iframe_src = 'https://services.datasketch.co/cdmxApp/_/?ckanConf=' + res.id %}
                 <iframe src="{{ iframe_src }}" frameborder="0" allowfullscreen></iframe>
               {% else %}
                 {% set iframe_src = 'https://visdatos.cdmx.gob.mx/app_direct_i/cdmx/_/?ckanConf=' + res.id %}

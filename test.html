@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CKAN Dataset Resources</title>
+</head>
+<body>
+    <h1>CKAN Dataset Resources</h1>
+    
+    <select id="organizationDropdown">
+        <option value="">Select an organization</option>
+    </select>
+
+    <select id="resourceDropdown">
+        <option value="">Select a resource</option>
+    </select>
+
+    <button id="visualizeButton" onclick="generateVisualization()">Generar visualización</button>
+
+    <h2>Resource Details:</h2>
+    <iframe id="resourceFrame" width="100%" height="600"></iframe>
+    <button id="resourceButton">Ir al conjunto de datos</button>
+
+    <script>
+        var organizations = {};
+        var addedOrganizations = new Set();
+        var packageIds = {};
+
+        // Callback function to handle the package response
+        function handlePackages(data) {
+            data.result.forEach(packageName => {
+                // For each package, fetch the resources
+                const script = document.createElement('script');
+                script.src = `https://datos-prueba.cdmx.gob.mx/api/3/action/package_show?id=${packageName}&callback=handleResources`;
+                document.head.appendChild(script);
+            });
+        }
+
+        // Callback function to handle the resources response
+        function handleResources(data) {
+            const resourceDropdown = document.getElementById('resourceDropdown');
+            const organizationDropdown = document.getElementById('organizationDropdown');
+            data.result.resources.forEach(resource => {
+                if (resource.dashboard === "default") {
+                    const orgId = data.result.organization.id;
+                    const orgName = data.result.organization.name;
+                    organizations[orgId] = orgName;
+                    const option = document.createElement('option');
+                    option.value = resource.id;
+                    option.text = resource.name;
+                    option.dataset.orgId = orgId;
+                    resourceDropdown.appendChild(option);
+                    packageIds[resource.id] = data.result.id;
+                }
+            });
+
+            for(let orgId in organizations) {
+                if (!addedOrganizations.has(orgId)) {
+                    const option = document.createElement('option');
+                    option.value = orgId;
+                    option.text = organizations[orgId];
+                    organizationDropdown.appendChild(option);
+                    addedOrganizations.add(orgId);
+                }
+            }
+        }
+
+        // Function to generate visualization for the selected resource
+        function generateVisualization() {
+            const resourceDropdown = document.getElementById('resourceDropdown');
+            const selectedResourceID = resourceDropdown.value;
+
+            const resourceFrame = document.getElementById('resourceFrame');
+            resourceFrame.src = `https://datasketch.shinyapps.io/cdmxApp/?ckanConf=${selectedResourceID}`;
+
+            const resourceButton = document.getElementById('resourceButton');
+            resourceButton.onclick = function() {
+                window.open(`https://datos-prueba.cdmx.gob.mx/dataset/${packageIds[selectedResourceID]}`);
+            }
+        }
+
+        // Listen to changes in the organization dropdown and filter the resources accordingly
+        document.getElementById('organizationDropdown').addEventListener('change', function() {
+            const selectedOrgId = this.value;
+            const resourceDropdown = document.getElementById('resourceDropdown');
+            Array.from(resourceDropdown.options).forEach(option => {
+                if (option.value !== '' && option.dataset.orgId !== selectedOrgId) {
+                    option.style.display = 'none';
+                } else {
+                    option.style.display = '';
+                }
+            });
+        });
+
+        // Create a script element and set the src attribute with the CKAN API URL and callback function
+        const script = document.createElement('script');
+        script.src = 'https://datos-prueba.cdmx.gob.mx/api/3/action/package_list?callback=handlePackages';
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>

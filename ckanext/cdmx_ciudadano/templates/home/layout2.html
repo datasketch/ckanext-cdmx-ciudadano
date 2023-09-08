@@ -4,31 +4,33 @@
   style="background-image: url(/images/background-image-index.png); background-position: center 65%; background-size: cover; background-repeat: no-repeat; padding: 4rem 2rem calc(4rem + 120px); position: relative;"
   role="main">
   <div class="container text-white text-center py-5 font-gotham ">
-    <h2 style="font-size: 24px; font-weight: lighter;">PLATAFORMA DE DATOS ABIERTOS</h1>
-      <h1 style="font-size: 48px;">PORTAL CIUDADANO</h1>
-      <div><img src="/images/poweredby.png" style="height: 35px;"></div>
-      <div class="row mt-5 justify-content-center">
-        <div class="col-lg-9">
-          <form class="main-search" method="get" action="{% url_for 'dataset.search' %}">
-            <input type="search" class="main-search-input" placeholder="¿Qué datos estás buscando?"
-              aria-label="{% block header_site_search_label %}¿Qué datos estás buscando?{% endblock %}" name="q"
-              value="" autocomplete="off" />
-            <button aria-label="Buscar" class="main-search-button" type="submit">
-              <img src="/images/search-home.png" alt="">
-            </button>
-          </form>
-        </div>
+    <h1 style="font-size: 48px;">REPOSITORIO CIUDADANO</h1>
+    <h2 style="font-size: 24px; font-weight: lighter;">DE DATOS ABIERTOS</h2>    
+    <div><img src="/images/poweredby.png" style="height: 35px;"></div>
+    <div class="row mt-5 justify-content-center">
+      <div class="col-lg-9">
+        <form class="main-search" method="get" action="{% url_for 'dataset.search' %}">
+          <input type="search" class="main-search-input" placeholder="¿Qué datos estás buscando?"
+            aria-label="{% block header_site_search_label %}¿Qué datos estás buscando?{% endblock %}" name="q" value=""
+            autocomplete="off" />
+          <button aria-label="Buscar" class="main-search-button" type="submit">
+            <img src="/images/search-home.png" alt="">
+          </button>
+        </form>
       </div>
+    </div>
   </div>
-  <div style="height: 120px; position: absolute; left: 0; bottom: 0; width: 100%;" class="d-flex align-items-center justify-content-center banner-bottom bg-green2">
+  <div style="height: 120px; position: absolute; left: 0; bottom: 0; width: 100%;"
+    class="d-flex align-items-center justify-content-center banner-bottom bg-green2">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-9">
           <div class="d-flex align-items-center justify-content-center flex-column flex-md-row" style="gap: 15px;">
             <div class="text-white text-right" style="width: 50%;">
-              <p>En este repositorio ciudadano podrás publicar tus conjuntos de datos para que otras personas puedan consultar, interactuar y cruzarlos con otros datos.</p>
+              <p class="font-montserrat">Publica tus bases de datos en el Repositorio Ciudadano. Aquí otras personas podrán descargar, interactuar y visualizar la información.</p>
             </div>
-            <a href="/validar" class="d-flex align-items-center justify-content-center bg-white" style="padding: 5px 0; gap: 15px; width: 300px; border-radius: 45px; height: 50px;" >
+            <a href="/validar" class="d-flex align-items-center justify-content-center bg-white"
+              style="padding: 5px 0; gap: 15px; width: 300px; border-radius: 45px; height: 50px;">
               <img src="/images/cargar.png" width="24">
               <span style="color: #938F22; font-size: 20px;">Carga tus datos</span>
             </a>
@@ -39,20 +41,28 @@
   </div>
 </div>
 <div style="background-image: url(/images/hexagonos.png); background-size: 100% auto; display: flex; flex-direction: column; padding: 20px 0; justify-content: center;
-align-items: center;" >
+align-items: center;">
   <div class="font-gotham d-flex" style="color: #585858; gap: 10px;">
     <div style="font-size: 42px; line-height: 1;">{{ stats.dataset_count }}</div>
     <div style="line-height: 1;">
-      <p style="font-size: 22px;"><a style="font-weight: 100;">CONJUNTOS DE DATOS</a> <br> <a style="font-weight: 900;">CARGADOS POR CIUDADANOS</a></p>
+      <p style="font-size: 22px;"><a style="font-weight: 100;">CONJUNTOS DE DATOS</a> <br> <a
+          style="font-weight: 900;">CARGADOS POR CIUDADANOS</a></p>
     </div>
   </div>
   <a style="color: #938F22; font-size: 20px;" href="/dataset"><u>Consulta el repositorio</u></a>
   <hr style="width: 50%;">
   <div style="display: flex; gap: 30px; justify-content: center;">
-    <a href="/cruza-tu-info"><div class="flex" style="border-style: double; border-radius: 34px; border-width: 1.45px; gap: 10px; padding: 10px 15px; border-color: #938F22; align-items: center; font-weight: 700; font-size: large; background-color: white; color: #938F22;"><img src="/images/cruza-tus-datos.png" alt="cruza-flechas" style="width: 20px;">Cruza tus datos</div></a>
-    <p style="width: 50%;">Utiliza la herramienta de cruce de datos para interactuar y comparar información de distintas bases.</p>
+    <a href="/cruza-tu-info">
+      <div class="flex"
+        style="border-style: double; border-radius: 34px; border-width: 1.45px; gap: 10px; padding: 10px 15px; border-color: #938F22; align-items: center; font-weight: 700; font-size: large; background-color: white; color: #938F22;">
+        <img src="/images/cruza-tus-datos.png" alt="cruza-flechas" style="width: 20px;">Cruza tus datos
+      </div>
+    </a>
+    <p class="font-montserrat" style="width: 50%;">Utiliza la herramienta de cruce de datos para interactuar y comparar información de distintas
+      bases.</p>
   </div>
 </div>
-<div style="background-image: url(/images/fondo-ondas.png); background-size: cover; background-position: center;" class="d-flex flex-column align-items-center justify-content-center py-4">
+<div style="background-image: url(/images/fondo-ondas.png); background-size: cover; background-position: center;"
+  class="d-flex flex-column align-items-center justify-content-center py-4">
   {% snippet "home/snippets/cdmx_featured_groups.html" %}
 </div>

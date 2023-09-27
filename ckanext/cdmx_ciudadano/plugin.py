@@ -244,7 +244,7 @@ class CdmxCiudadanoPlugin(
         for route in routes:
             bp.add_url_rule(route, view_func=empty)
 
-        return [blueprint.validate]
+        return [blueprint.validate, blueprint.cruza_info]
         """ return blueprint.validate """
 
 # IAuthFunctions

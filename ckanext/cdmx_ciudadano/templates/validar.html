@@ -151,7 +151,12 @@
                 <h5 style="color: #C45633; padding-bottom: 20px;">VALIDADOR DE DATOS</h5>
                 <p>Aqui podrás utilizar nuestra <b>herramienta de validación</b> para obtener un diagnóstico de qué tan bien estructurado se encuentra tu archivo.</p>
                 <p>En caso de que tus datos no se ajusten completamente a los estándares descritos en esta guía, es posible que tus datos no se visualicen correctamente y no puedas cruzarlos con la información del Repositorio Ciudadano de Datos Abiertos.</p>
-                <iframe src="https://visdatosciudadanos.cdmx.gob.mx/app_direct_i/cdmx-valida-info/_/" frameborder="0" style="height: 550px; width: 100%;"></iframe>
+                {% set site_url = h.get_site_url() %}
+                {% if site_url == 'https://dev.datosciudadanos.cdmx.gob.mx' %}
+                    <iframe src="https://services.datasketch.co/cdmx-valida-datos/" frameborder="0" style="height: 550px; width: 100%;"></iframe>
+                {% else %}
+                    <iframe src="https://visdatosciudadanos.cdmx.gob.mx/app_direct_i/cdmx-valida-info/_/" frameborder="0" style="height: 550px; width: 100%;"></iframe>
+                {% endif %}
                 <!-- <a href="/dataset/new"><button style="background-color: #938F22; border-radius: 4.2px; padding: 4px 10px 4px 10px; margin: 80px 100px;"><span style="color: white; font-size: 12px; padding-left: 5px;">Publicar datos</span></button></a> -->
                 <p>En caso de que el resultado de la validación no sea favorable, es altamente recomendable hacer las modificaciones necesarias de acuerdo con esta guía y validar de nuevo tu archivo.</p>
             </div>

@@ -11,7 +11,11 @@
     </div>
 </div>
 <div class="principal">
-    <iframe src="https://visdatosciudadanos.cdmx.gob.mx/app_direct_i/cdmx-cruza-info/_/" frameborder="0"
-        style="height: 750px; width: 100%;"></iframe>
+    {% set site_url = h.get_site_url() %}
+    {% if site_url == 'https://dev.datosciudadanos.cdmx.gob.mx' %}
+        <iframe src="https://services.datasketch.co/cdmx-cruza-info/" frameborder="0" style="height: 750px; width: 100%;"></iframe>
+    {% else %}
+        <iframe src="https://visdatosciudadanos.cdmx.gob.mx/app_direct_i/cdmx-cruza-info/_/" frameborder="0" style="height: 750px; width: 100%;"></iframe>
+    {% endif %}
 </div>
 {% endblock %}

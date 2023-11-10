@@ -26,6 +26,76 @@
     {% block extra_fields %}
     {% endblock %}
 
+    <h5 style="margin-top: 40px;">Términos de servicio y aviso de privacidad</h5>
+    <div style="height:100px;width:full;overflow:auto; margin: 20px 0px; border:1px solid rgb(205, 202, 202); padding: 5px 10px;">
+      <p><b>AVISO DE PRIVACIDAD SIMPLIFICADO DEL “SISTEMA DE DATOS PERSONALES DE
+      LOS USUARIOS DE LAS PLATAFORMAS DE GOBIERNO DIGITAL DE LA AGENCIA
+      DIGITAL DE INNOVACIÓN PÚBLICA DE LA CIUDAD DE MÉXICO.</b></p>
+      <p>La Agencia Digital de Innovación Pública de la Ciudad de México (ADIP), a través de la
+      Dirección General de Gobierno Digital, es la responsable del tratamiento de los datos
+      personales que nos proporcione, los cuales serán protegidos en el <b>“SISTEMA DE
+      DATOS PERSONALES DE LOS USUARIOS DE LAS PLATAFORMAS DE GOBIERNO
+      DIGITAL DE LA AGENCIA DIGITAL DE INNOVACIÓN PÚBLICA DE LA CIUDAD DE
+      MÉXICO”.</b></p>
+      <p>Los datos personales recabados serán utilizados con la finalidad de que las personas
+      que accedan a las plataformas, aplicaciones digitales o servicios de mensajería, creen
+      un usuario y contraseña, o proporcionen el mecanismo de autenticación que les sea
+      solicitado para registrarse y acceder a las mismas, con el objeto de hacer uso de los
+      distintos módulos que cada una contenga, los cuales han sido diseñados para
+      integrar información de utilidad que pueda ser consultada desde una aplicación
+      móvil, un sitio web o servicios de mensajería, según corresponda, sobre temas de
+      movilidad, conectividad, medio ambiente, participación ciudadana, clima y seguridad
+      de la Ciudad de México; y que los usuarios puedan emitir reportes y quejas a través
+      del módulo del Sistema Unificado de Atención Ciudadana o solicitar servicios en
+      materia de seguridad y movilidad.</p>
+      <p>El uso previsto que se dará a los datos personales recabados mediante este Sistema
+      será precargar los datos de las personas que se registren en las plataformas para
+      brindar información, proporcionar atención y dar seguimiento a sus solicitudes.</p>
+      <p>Y en su caso, podrán ser transferidos a los siguientes Sujetos Obligados:</p>
+      <p><b>a) Administración Pública Centralizada de la Ciudad de México:</b></p>
+      <p>1. Secretaría de la Contraloría General; para el control interno, auditoría, evaluación
+      gubernamental; así como prevenir, investigar, substanciar y sancionar las faltas
+      administrativas.</p>
+      <p><b>b) Órganos Desconcentrados adscritos a la Jefatura de Gobierno:</b></p>
+      <p>1. Centro de Comando, Control, Cómputo, Comunicaciones y Contacto Ciudadano de
+      la Ciudad de México (C5); para el ejercicio de sus funciones en materia de seguridad
+      pública, urgencias médicas, medio ambiente, protección civil, movilidad y servicios a
+      la comunidad en la capital del país a través del video monitoreo, de la captación de
+      llamadas telefónicas y de aplicaciones informáticas de inteligencia.</p>
+      <p><b>c) Órganos Constitucionalmente Autónomos</b></p>
+      <p>1. Comisión de Derechos Humanos de la Ciudad de México; para la investigación de
+      quejas y denuncias por presuntas violaciones a los derechos humanos;</p>
+      <p>2. Instituto de Transparencia, Acceso a la Información Pública, Protección de Datos
+      Personales y Rendición de Cuentas de la Ciudad de México; para la sustanciación de
+      recursos de revisión y denuncias por incumplimiento a la Ley de Protección de Datos
+      Personales en Posesión de Sujetos Obligados de la Ciudad de México.</p>
+      <p><b>d) Órganos Jurisdiccionales y de Procuración de Justicia; para el ejercicio de sus
+      funciones materia de investigación y procuración de justicia:</b></p>
+      <p>1. Órganos Jurisdiccionales y Administrativos del fuero federal y local; y</p>
+      <p>2. Fiscalía General de Justicia de la Ciudad de México.</p>
+      <p><b>e) Entidades de Fiscalización:</b></p>
+      <p>1. Auditoría Superior de la Federación, para el ejercicio de sus funciones materia de
+      supervisión y control del cumplimiento del uso de los recursos públicos federales.</p>
+      <p>2. Auditoría Superior de la Ciudad de México, para el ejercicio de sus funciones
+      materia de supervisión y control del cumplimiento del uso de los recursos públicos en
+      la Ciudad de México.</p>
+      <p>Usted podrá manifestar la negativa al tratamiento de sus datos personales
+      directamente ante la Unidad de Transparencia de la Agencia Digital de Innovación
+      Pública de la Ciudad de México, ubicada en calle José Mariano Jimenez, número 13,
+      Colonia Centro, Alcaldía Cuauhtémoc, C.P. 06080, con número telefónico (55)
+      3090-0500 Ext. 119 y (55)5447-7500 Ext. 13315 y correo electrónico
+      <a href="mailto:transparencia.adip@cdmx.gob.mx">transparencia.adip@cdmx.gob.mx</a> .</p>
+      <p>Para conocer el Aviso de Privacidad Integral puede acudir directamente a la Unidad
+      de Transparencia o ingresar a la página:
+      <a href="https://www.transparencia.cdmx.gob.mx/storage/app/uploads/public/64f/0e4/4f9/64f0e44f90313765072110.pdf">https://www.transparencia.cdmx.gob.mx/storage/app/uploads/public/64f/0e4/4f9/64f0
+      e44f90313765072110.pdf</a></p>
+      <p>Fecha de última actualización: 25/08/2023</p>
+      </div>
+      <label id="disclaimer" class="clean-label user-select-none" style="padding: 1px 20px; border-radius: 7px; margin-right: 58px; margin-bottom: 40px;" data-module="disclaimer" data-module-dep="button[name=save]">
+        <input type="checkbox" style="border: 2px #000000;">
+        <span style="padding-left: 3px;">Al registrarse aceptas los términos de servicio y aviso de privacidad.</span>
+      </label>
+
     {% block captcha %}
       {% if g.recaptcha_publickey %}
         {% snippet "user/snippets/recaptcha.html", public_key=g.recaptcha_publickey %}
